@@ -47,6 +47,7 @@ table th
 /*Оформление содержания столбцов таблицы*/
 table td
 {
+	background: rgb(255, 255, 255);
 	padding: 5px;
 	border: 1px solid rgb(80, 80, 80);
 	text-align: center;

@@ -26,7 +26,7 @@ $client_info = getInfoByID(2);
              $fio = $clients_info[$i]["clientName"];
              $passport = $clients_info[$i]["clientPassport"];
              $phoneNumber = $clients_info[$i]["clientPhone"];
-             echo "<tr><td>$id</td><td>$fio</td><td>$passport</td><td>$phoneNumber</td><td><a href = clientDelByIDController.php?clientID=$id>X</a></td></tr>";
+             echo "<tr><td>$id</td><td>$fio</td><td>$passport</td><td>$phoneNumber</td><td><a href = clientDelByIDController.php?clientDelByID=$id><img src = 'Resources/cross.png'</a></td></tr>";
          }
          ?>
      </table>
