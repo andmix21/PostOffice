@@ -31,9 +31,18 @@ table
 	border: 1px solid rgb(80, 80, 80);
 	table-layout: fixed;
 	width: 100%;
+}
+
+.table
+{
 	margin-bottom: 50px;
 }
 
+.addClient
+{
+	text-align: center;
+	padding: 20px;
+}
 /*Оформление названия столбцов таблицы*/
 table th
 {
@@ -58,3 +67,8 @@ td:nth-child(2)
 	text-align: left;
 }
 
+.form
+{
+	display: flex;
+	justify-content: center;
+}

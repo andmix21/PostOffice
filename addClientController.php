@@ -1,5 +1,5 @@
 <?php
 include "functions_db.php";
-deleteClientByID($_GET['clientDelByID']);
+addNewClient($_POST['fio'], $_POST['passport'], $_POST['phone']);
 header("Location: index.php");
 ?>

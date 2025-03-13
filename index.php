@@ -10,13 +10,13 @@ $client_info = getInfoByID(2);
     <meta charset = "UTF-8">
     <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
     <link rel = "stylesheet" href = "style.css">
-    <title>Post office / clients</title>
+    <title>Клиенты</title>
 </head>
 <body>
     <section class = "beginning">
         <div class = "title_text">КЛИЕНТЫ ПОЧТОВЫХ ОТДЕЛЕНИЙ</div>
     </section>
-    <div>
+    <div class = "table">
      <table>
          <thead><th>Код</th><th>ФИО</th><th>Паспорт</th><th>Телефон</th><th>Удалить</th></thead>
          <?php
@@ -30,8 +30,11 @@ $client_info = getInfoByID(2);
          }
          ?>
      </table>
+     <div class = "addClient">
+        <a href = "addClient.php">Добавить нового клиента</a>
+     </div>
     </div>
-    <div>
+    <div class = "table">
      <table>
          <thead><th>Код</th><th>ФИО</th><th>Паспорт</th><th>Телефон</th></thead>
          <?php

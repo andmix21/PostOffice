@@ -37,11 +37,21 @@ function getInfoByID($id)
 }
 
 //Удаление данных по ID
-function deleteInfoByID($id)
+function deleteClientByID($id)
 {
     global $link;
     openDB();
     $res = mysqli_query($link, "DELETE FROM clients WHERE clientID = $id");
+    closeDB();
+    return $res;
+}
+
+//Добавление нового клиента
+function addNewClient($fio, $passport, $phone)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "INSERT INTO clients (clientName, clientPassport, clientPhone) VALUE ('$fio', '$passport', '$phone')");
     closeDB();
     return $res;
 }
