@@ -17,22 +17,22 @@ $client_info = getInfoByID(2);
         <div class = "title_text">КЛИЕНТЫ ПОЧТОВЫХ ОТДЕЛЕНИЙ</div>
     </section>
     <div class = "table">
-     <table>
-         <thead><th>Код</th><th>ФИО</th><th>Паспорт</th><th>Телефон</th><th>Удалить</th></thead>
-         <?php
-         for($i = 0; $i < count($clients_info); $i++)
-         {
-             $id = $clients_info[$i]["clientID"];
-             $fio = $clients_info[$i]["clientName"];
-             $passport = $clients_info[$i]["clientPassport"];
-             $phoneNumber = $clients_info[$i]["clientPhone"];
-             echo "<tr><td>$id</td><td>$fio</td><td>$passport</td><td>$phoneNumber</td><td><a href = clientDelByIDController.php?clientDelByID=$id><img src = 'Resources/cross.png'</a></td></tr>";
-         }
-         ?>
-     </table>
-     <div class = "addClient">
-        <a href = "addClient.php">Добавить нового клиента</a>
-     </div>
+        <table>
+            <thead><th>Код</th><th>ФИО</th><th>Паспорт</th><th>Телефон</th><th>Редактировать</th><th>Удалить</th></thead>
+                <?php
+                    for($i = 0; $i < count($clients_info); $i++)
+                        {
+                            $id = $clients_info[$i]["clientID"];
+                            $fio = $clients_info[$i]["clientName"];
+                            $passport = $clients_info[$i]["clientPassport"];
+                            $phoneNumber = $clients_info[$i]["clientPhone"];
+                            echo "<><td>$id</td><td>$fio</td><td>$passport</td><td>$phoneNumber</td><td><a href = editClient.php?clientEditByID=$id><img src = 'Resources/edit.png'</a></td></td><td><a href = clientDelByIDController.php?clientDelByID=$id><img src = 'Resources/cross.png'</a></td></tr>";
+                        }
+                ?>
+        </table>
+        <div class = "addClient">
+            <a href = "addClient.php">Добавить нового клиента</a>
+        </div>
     </div>
     <div class = "table">
      <table>

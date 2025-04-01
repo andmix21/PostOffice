@@ -55,4 +55,13 @@ function addNewClient($fio, $passport, $phone)
     closeDB();
     return $res;
 }
+
+function edit_client_by_id($id, $fio, $passport, $phone)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "UPDATE clients SET clientName = '$fio', clientPassport = '$passport', clientPhone = '$phone' WHERE clientID = $id");
+    closeDB();
+    return $res;
+}
 ?>
