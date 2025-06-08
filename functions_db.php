@@ -1,11 +1,13 @@
 <?php
 $link = false;
 
+//------------------------------Соединение с БД "postoffice"------------------------------
+
 //Открытие соединения с БД
 function openDB()
 {
     global $link;
-    $link = mysqli_connect("localhost", "root", "", "post_office");
+    $link = mysqli_connect("localhost", "root", "", "postoffice");
     mysqli_query($link,"SET NAMES UTF8");
 }
 
@@ -16,18 +18,20 @@ function closeDB()
     mysqli_close($link);
 }
 
-//Получение данных из БД
-function getAllInfo()
+//------------------------------Работа с таблицей "clients"------------------------------
+
+//Получение данных из таблицы
+function get_all_clients_info()
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "SELECT * FROM clients");
+    $res = mysqli_query($link, "SELECT * FROM clients ORDER BY clientLastName");
     closeDB();
     return mysqli_fetch_all($res, MYSQLI_ASSOC);
 }
 
-//Получение данных из БД по ID
-function getInfoByID($id)
+//Получение данных из таблицы по ID
+function get_client_info_by_id($id)
 {
     global $link;
     openDB();
@@ -36,31 +40,184 @@ function getInfoByID($id)
     return mysqli_fetch_assoc($res);
 }
 
-//Удаление данных по ID
-function deleteClientByID($id)
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "DELETE FROM clients WHERE clientID = $id");
-    closeDB();
-    return $res;
-}
-
 //Добавление нового клиента
-function addNewClient($fio, $passport, $phone)
+function add_new_client($last_name, $first_name, $patronymic, $passport, $phone)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "INSERT INTO clients (clientName, clientPassport, clientPhone) VALUE ('$fio', '$passport', '$phone')");
+    $res = mysqli_query($link, "INSERT INTO clients (clientLastName, clientFirstName, clientPatronymic, clientPassport, clientPhone) VALUE ('$last_name', '$first_name','$patronymic', '$passport', '$phone')");
+    closeDB();
+    return $res;
+}
+//Редактирование данных по ID
+function edit_client_by_id($client_id, $last_name, $first_name, $patronymic, $passport, $phone)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "UPDATE clients SET clientLastName = '$last_name', clientFirstName = '$first_name', clientPatronymic = '$patronymic', clientPassport = '$passport', clientPhone = '$phone' WHERE clientID = $client_id");
     closeDB();
     return $res;
 }
 
-function edit_client_by_id($id, $fio, $passport, $phone)
+//Удаление данных по ID
+function delete_client_by_id($client_id)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "UPDATE clients SET clientName = '$fio', clientPassport = '$passport', clientPhone = '$phone' WHERE clientID = $id");
+    $res = mysqli_query($link, "DELETE FROM clients WHERE clientID = $client_id");
+    closeDB();
+    return $res;
+}
+
+//------------------------------Работа с таблицей "recipients"------------------------------
+
+//Получение данных из таблицы
+function get_all_recipient_info()
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM recipients ORDER BY recipientLastName");
+    closeDB();
+    return mysqli_fetch_all($res, MYSQLI_ASSOC);
+}
+
+//Получение данных из таблицы по ID
+function get_recipient_info_by_id($id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM recipients WHERE recipientID = $id");
+    closeDB();
+    return mysqli_fetch_assoc($res);
+}
+
+//Добавление нового получателя
+function add_new_recipient($last_name, $first_name, $patronymic, $phone)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "INSERT INTO recipients (recipientLastName, recipientFirstName, recipientPatronymic, recipientPhone) VALUE ('$last_name', '$first_name','$patronymic', '$phone')");
+    closeDB();
+    return $res;
+}
+//Редактирование данных по ID
+function edit_recipient_by_id($recipient_id, $last_name, $first_name, $patronymic, $phone)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "UPDATE recipients SET recipientLastName = '$last_name', recipientFirstName = '$first_name', recipientPatronymic = '$patronymic', recipientPhone = '$phone' WHERE recipientID = $recipient_id");
+    closeDB();
+    return $res;
+}
+
+//Удаление данных по ID
+function delete_recipient_by_id($recipient_id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "DELETE FROM recipients WHERE recipientID = $recipient_id");
+    closeDB();
+    return $res;
+}
+
+//------------------------------Работа с таблицей "departments"------------------------------
+
+//Получение данных из таблицы
+function get_all_departments_info()
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM departments ORDER BY departmentRegion");
+    closeDB();
+    return mysqli_fetch_all($res, MYSQLI_ASSOC);
+}
+
+//Получение данных из таблицы по ID
+function get_department_Info_By_ID($id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM departments WHERE departmentID = $id");
+    closeDB();
+    return mysqli_fetch_assoc($res);
+}
+
+//Добавление нового отделения
+function add_new_department($region, $city_or_village, $address)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "INSERT INTO departments (departmentRegion, departmentCityOrVillage, departmentAddress) VALUE ('$region', '$city_or_village','$address')");
+    closeDB();
+    return $res;
+}
+//Редактирование данных по ID
+function edit_department_by_id($id, $region, $city_or_village, $address)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "UPDATE departments SET departmentRegion = '$region', departmentCityOrVillage = '$city_or_village', departmentAddress = '$address' WHERE departmentID = $id");
+    closeDB();
+    return $res;
+}
+
+//Удаление данных по ID
+function delete_department_by_id($department_id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "DELETE FROM departments WHERE departmentID = $department_id");
+    closeDB();
+    return $res;
+}
+
+//------------------------------Работа с таблицей "corresptype"------------------------------
+
+//Получение данных из таблицы
+function get_all_corresp_type_info()
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM corresptype ORDER BY typeName");
+    closeDB();
+    return mysqli_fetch_all($res, MYSQLI_ASSOC);
+}
+
+//Получение данных из таблицы по ID
+function get_corresp_type_info_by_id($id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM corresptype WHERE typeOfCorrespondenceID = $id");
+    closeDB();
+    return mysqli_fetch_assoc($res);
+}
+
+//Добавление нового отделения
+function add_new_corresp_type($corresp_name)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "INSERT INTO corresptype (typeName) VALUE ('$corresp_name')");
+    closeDB();
+    return $res;
+}
+//Редактирование данных по ID
+function edit_corresp_type_by_id($id, $corresp_name)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "UPDATE corresptype SET typeName = '$corresp_name' WHERE typeOfCorrespondenceID = $id");
+    closeDB();
+    return $res;
+}
+
+//Удаление данных по ID
+function delete_corresp_type_by_id($corresp_type_id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "DELETE FROM corresptype WHERE typeOfCorrespondenceID = $corresp_type_id");
     closeDB();
     return $res;
 }
