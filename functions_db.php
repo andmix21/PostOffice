@@ -291,5 +291,69 @@ function add_new_worker($last_name, $first_name, $patronymic, $gender, $dateOfBi
     closeDB();
     return $res;
 }
+
+
+
+
+
+//------------------------------Работа с таблицей "status"------------------------------
+
+//Получение данных из таблицы
+function get_all_status_info()
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM statusoforders ORDER BY statusName");
+    closeDB();
+    return mysqli_fetch_all($res, MYSQLI_ASSOC);
+}
+
+//Получение данных из таблицы по ID
+function get_status_info_by_id($id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM statusoforders WHERE statusID = $id");
+    closeDB();
+    return mysqli_fetch_assoc($res);
+}
+
+//Добавление нового типа
+function add_new_status($status_name)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "INSERT INTO statusoforders (statusName) VALUE ('$status_name')");
+    closeDB();
+    return $res;
+}
 //Редактирование данных по ID
+function edit_status_by_id($id, $status_name)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "UPDATE statusoforders SET statusName = '$status_name' WHERE statusID = $id");
+    closeDB();
+    return $res;
+}
+
+//Удаление данных по ID
+function delete_status_by_id($status_id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "DELETE FROM statusoforders WHERE statusID = $status_id");
+    closeDB();
+    return $res;
+}
+
+//Поиск типа
+function status_search($searchStatus)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM statusoforders WHERE statusName LIKE '%$searchStatus%' ORDER BY statusName");
+    closeDB();
+    return $res;
+}
 ?>
