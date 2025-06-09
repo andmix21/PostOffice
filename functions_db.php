@@ -221,7 +221,7 @@ function get_corresp_type_info_by_id($id)
     return mysqli_fetch_assoc($res);
 }
 
-//Добавление нового отделения
+//Добавление нового типа
 function add_new_corresp_type($corresp_name)
 {
     global $link;
@@ -246,6 +246,16 @@ function delete_corresp_type_by_id($corresp_type_id)
     global $link;
     openDB();
     $res = mysqli_query($link, "DELETE FROM corresptype WHERE correspTypeID = $corresp_type_id");
+    closeDB();
+    return $res;
+}
+
+//Поиск типа
+function corresp_type_search($searchCorrespType)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM corresptype WHERE typeName LIKE '%$searchCorrespType%' ORDER BY typeName");
     closeDB();
     return $res;
 }

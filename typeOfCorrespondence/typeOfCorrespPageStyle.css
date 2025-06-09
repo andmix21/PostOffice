@@ -52,18 +52,17 @@ li:first-child{
 
 /*----------------------------------Оформление секции добавления и нахождения клиента----------------------------------*/
 /*Настройка секции*/
-.add_type
+.add_and_find_corresp_type
 {
 	display: flex;
 	justify-content: center;
-	padding: 5px;
 }
 
 /*Настройка ссылок*/
-.add_type_button
+.add_corresp_type_button
 {
 	padding: 5px;
-	margin: 5px;
+	margin: 15px;
 	background-color:rgb(4, 44, 133);
 	border: 2px solid rgb(80, 80, 80);
 	white-space: nowrap;
@@ -74,6 +73,17 @@ a
 	color: rgb(255, 255, 255);
 	text-decoration: none;
 	font-weight: bold;
+}
+
+.searchdiv
+{
+	background-color: rgb(4, 44, 133);
+	border: 2px solid rgb(80, 80, 80);
+	padding: 5px;
+	margin: 5px;
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+
 }
 
 /*----------------------------------Оформление таблицы----------------------------------*/
