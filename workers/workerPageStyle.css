@@ -25,7 +25,7 @@ body
     font-weight: bold;
 }
 
-/*----------------------------------Оформление блока навигации----------------------------------*/
+/*----------------------------------Оформление секции добавления и нахождения клиента----------------------------------*/
 .nav{
     z-index: 1;
     position: sticky;
@@ -50,19 +50,20 @@ li:first-child{
     border-left: 2px solid rgb(80, 80, 80);
 }
 
-/*----------------------------------Оформление секции добавления получателя----------------------------------*/
+/*----------------------------------Оформление секции добавления и нахождения клиента----------------------------------*/
 /*Настройка секции*/
-.add_and_find_recipient
+.add_and_find_client
 {
 	display: flex;
 	justify-content: center;
+	padding: 5px;
 }
 
 /*Настройка ссылок*/
-.add_recipient_button
+.add_and_find_client_button
 {
 	padding: 5px;
-	margin: 15px;
+	margin: 5px;
 	background-color:rgb(4, 44, 133);
 	border: 2px solid rgb(80, 80, 80);
 	white-space: nowrap;
@@ -73,17 +74,6 @@ a
 	color: rgb(255, 255, 255);
 	text-decoration: none;
 	font-weight: bold;
-}
-
-.searchdiv
-{
-	background-color: rgb(4, 44, 133);
-	border: 2px solid rgb(80, 80, 80);
-	padding: 5px;
-	margin: 5px;
-	color: rgb(255, 255, 255);
-	font-weight: bold;
-
 }
 
 /*----------------------------------Оформление таблицы----------------------------------*/
@@ -115,7 +105,7 @@ table td
 	overflow: hidden;
 }
 
-td:nth-child(1), td:nth-child(5), td:nth-child(6), td:nth-child(7)
+td:nth-child(1), td:nth-child(5), td:nth-child(6), td:nth-child(7), td:nth-child(8)
 {
 	text-align: center;
 }
@@ -125,13 +115,22 @@ th:nth-child(1), td:nth-child(1)
 	width: 1%;
 }
 
-th:nth-child(2), td:nth-child(2), th:nth-child(3), td:nth-child(3), th:nth-child(4), td:nth-child(4), th:nth-child(5), td:nth-child(5)
+th:nth-child(2), td:nth-child(2), th:nth-child(3), td:nth-child(3), th:nth-child(4), td:nth-child(4)
 {
 	width: 7%;
 }
 
-
-th:nth-child(6), td:nth-child(6), th:nth-child(7), td:nth-child(7)
+th:nth-child(5), td:nth-child(5)
 {
 	width: 5%;
+}
+
+th:nth-child(6), td:nth-child(6)
+{
+	width: 7%;
+}
+
+th:nth-child(7), td:nth-child(7), th:nth-child(8), td:nth-child(8)
+{
+	width: 6%;
 }

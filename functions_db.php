@@ -68,6 +68,15 @@ function delete_client_by_id($client_id)
     closeDB();
     return $res;
 }
+//Поиск клиента
+function client_search($searchClient)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM clients WHERE clientLastName LIKE '%$searchClient%' OR clientFirstName LIKE '%$searchClient%' OR clientPatronymic LIKE '%$searchClient%' OR clientPassport LIKE '%$searchClient%' OR clientPhone LIKE '%$searchClient%' ORDER BY clientLastName");
+    closeDB();
+    return $res;
+}
 
 //------------------------------Работа с таблицей "recipients"------------------------------
 
@@ -116,6 +125,16 @@ function delete_recipient_by_id($recipient_id)
     global $link;
     openDB();
     $res = mysqli_query($link, "DELETE FROM recipients WHERE recipientID = $recipient_id");
+    closeDB();
+    return $res;
+}
+
+//Поиск получателя
+function recipient_search($searchRecipient)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM recipients WHERE recipientLastName LIKE '%$searchRecipient%' OR recipientFirstName LIKE '%$searchRecipient%' OR recipientPatronymic LIKE '%$searchRecipient%' OR recipientPhone LIKE '%$searchRecipient%' ORDER BY recipientLastName");
     closeDB();
     return $res;
 }
@@ -170,6 +189,15 @@ function delete_department_by_id($department_id)
     closeDB();
     return $res;
 }
+//Поиск отделения
+function department_search($searchDepartment)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM departments WHERE departmentRegion LIKE '%$searchDepartment%' OR departmentCityOrVillage LIKE '%$searchDepartment%' OR departmentAddress LIKE '%$searchDepartment%' ORDER BY departmentRegion");
+    closeDB();
+    return $res;
+}
 
 //------------------------------Работа с таблицей "corresptype"------------------------------
 
@@ -188,7 +216,7 @@ function get_corresp_type_info_by_id($id)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "SELECT * FROM corresptype WHERE typeOfCorrespondenceID = $id");
+    $res = mysqli_query($link, "SELECT * FROM corresptype WHERE correspTypeID = $id");
     closeDB();
     return mysqli_fetch_assoc($res);
 }
@@ -207,7 +235,7 @@ function edit_corresp_type_by_id($id, $corresp_name)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "UPDATE corresptype SET typeName = '$corresp_name' WHERE typeOfCorrespondenceID = $id");
+    $res = mysqli_query($link, "UPDATE corresptype SET typeName = '$corresp_name' WHERE correspTypeID = $id");
     closeDB();
     return $res;
 }
@@ -217,8 +245,41 @@ function delete_corresp_type_by_id($corresp_type_id)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "DELETE FROM corresptype WHERE typeOfCorrespondenceID = $corresp_type_id");
+    $res = mysqli_query($link, "DELETE FROM corresptype WHERE correspTypeID = $corresp_type_id");
     closeDB();
     return $res;
 }
+
+//------------------------------Работа с таблицей "workers"------------------------------
+
+//Получение данных из таблицы
+function get_all_workers_info()
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM workers JOIN department ON workers.departmentID = departments.departmentID ORDER BY workerLastName");
+    closeDB();
+    return mysqli_fetch_all($res, MYSQLI_ASSOC);
+}
+
+//Получение данных из таблицы по ID
+function get_worker_info_by_id($id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM workers WHERE workerID = $id");
+    closeDB();
+    return mysqli_fetch_assoc($res);
+}
+
+//Добавление нового клиента
+function add_new_worker($last_name, $first_name, $patronymic, $gender, $dateOfBirth, $department_id, $wPost)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "INSERT INTO workers (workerLastName, workerFirstName, workerPatronymic, gender, dateOfBirth, workerPost) VALUE ('$last_name', '$first_name','$patronymic', '$gender', '$dateOfBirth')");
+    closeDB();
+    return $res;
+}
+//Редактирование данных по ID
 ?>

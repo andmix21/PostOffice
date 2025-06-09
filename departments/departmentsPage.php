@@ -26,9 +26,16 @@ $departments_info = get_all_departments_info();
             <li><a href="#end">Конец</a></li>
         </ul>
     </div>
-    <section class = "add_department">
+    <section class = "add_and_find_department">
+        <div class = searchdiv>
+            <form action="searchResultDepartmentPage.php" method="GET">
+                <div><label for="search_term">Поиск отделения</label></div>
+                <div><input type="text" id="search_term" name="search_term" required>
+                <button type="submit">Поиск</button></div>
+            </form>
+        </div>
         <div class = "add_department_button">
-            <a href = "departmentAddPage.php">Добавить новое отделение</a>
+            <a href = "departmentAddPage.php">Добавить новое отделение</a>  
         </div>
     </section>
     <div class = "table">

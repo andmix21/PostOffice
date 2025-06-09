@@ -8,11 +8,11 @@ include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "/PostOffice/formPagesStyle.css">
-    <title>Добавление почтового отделения</title>
+    <title>Добавление клиента</title>
 </head>
 <body>
     <section class = "beginning", id='home'>
-        <div class = "title_text">ДОБАВЛЕНИЕ ПОЧТОВОГО ОТДЕЛЕНИЯ</div>
+        <div class = "title_text">ДОБАВЛЕНИЕ КЛИЕНТА</div>
     </section>
     <div class="nav">
         <ul>
@@ -26,23 +26,35 @@ include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
         </ul>
     </div>
     <section class = "formSection">
-        <form action = "departmentAddController.php" method = "POST" role = 'form'>
+        <form action = "clientAddController.php" method = "POST" role = 'form'>
             <div class = form>
-                <div class = label><label for = "region">Регион</label>
+                <div class = label><label for = "last_name">Фамилия</label>
                     <div>
-                        <input id = "region" type = "text" name = "region"/>
+                        <input id = "last_name" type = "text" name = "last_name"/>
                     </div>        
                 </div>
 
-                <div class = label><label for = "city_or_village">Населенный пункт</label>
+                <div class = label><label for = "first_name">Имя</label>
                     <div>
-                        <input id = "city_or_village" type = "text" name = "city_or_village"/>
+                        <input id = "first_name" type = "text" name = "first_name"/>
                     </div>        
                 </div>
 
-                <div class = label><label for = "address">Адрес</label>
+                <div class = label><label for = "patronymic">Отчество</label>
                     <div>
-                        <input id = "address" type = "text" name = "address"/>
+                        <input id = "patronymic" type = "text" name = "patronymic"/>
+                    </div>        
+                </div>
+
+                <div class = label><label for = "passport">Паспорт</label>
+                    <div>
+                        <input id = "passport" type = "text" name = "passport"/>
+                    </div>        
+                </div>
+
+                <div class = label><label for = "phone">Телефон</label>
+                    <div>
+                        <input id = "phone" type = "phone" name = "phone"/>
                     </div>        
                 </div>
 

@@ -1,6 +1,7 @@
 <?php
 include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
-$recipients_info = get_all_recipient_info();
+$searchTerm = $_GET['search_term'];
+$recipients_info = recipient_search($searchTerm);
 ?>
 
 <!DOCTYPE html>
@@ -9,11 +10,11 @@ $recipients_info = get_all_recipient_info();
     <meta charset = "UTF-8">
     <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
     <link rel = "stylesheet" href = "recipientsPageStyle.css">
-    <title>Получатели</title>
+    <title>Результаты поиска</title>
 </head>
 <body>
     <section class = "beginning", id='home'>
-        <div class = "title_text">ПОЛУЧАТЕЛИ</div>
+        <div class = "title_text">РЕЗУЛЬТАТЫ ПОИСКА</div>
     </section>
     <div class="nav">
         <ul>
@@ -27,28 +28,21 @@ $recipients_info = get_all_recipient_info();
         </ul>
     </div>
     <section class = "add_and_find_recipient">
-        <div class = searchdiv>
-            <form action="searchResultRecipientPage.php" method="GET">
-                <div><label for="search_term">Поиск получателя</label></div>
-                <div><input type="text" id="search_term" name="search_term" required>
-                <button type="submit">Поиск</button></div>
-            </form>
-        </div>
         <div class = "add_recipient_button">
-            <a href = "recipientAddPage.php">Добавить нового получателя</a>  
+            <a href = "recipientAddPage.php">Добавить нового получателя</a>
         </div>
     </section>
     <div class = "table">
         <table>
             <thead><th>Код</th><th>Фамилия</th><th>Имя</th><th>Отчество</th><th>Телефон</th><th>Редактировать</th><th>Удалить</th></thead>
             <?php
-                for($i = 0; $i < count($recipients_info); $i++)
+                foreach($recipients_info as $recipient)
                 {
-                    $recipient_id = $recipients_info[$i]["recipientID"];
-                    $recipient_last_name = $recipients_info[$i]["recipientLastName"];
-                    $recipient_first_name = $recipients_info[$i]["recipientFirstName"];
-                    $recipient_patronymic = $recipients_info[$i]["recipientPatronymic"];
-                    $recipient_phone_number = $recipients_info[$i]["recipientPhone"];
+                    $recipient_id = $recipient["recipientID"];
+                    $recipient_last_name = $recipient["recipientLastName"];
+                    $recipient_first_name = $recipient["recipientFirstName"];
+                    $recipient_patronymic = $recipient["recipientPatronymic"];
+                    $recipient_phone_number = $recipient["recipientPhone"];
                     echo "<tr><td>$recipient_id</td>
                     <td>$recipient_last_name</td>
                     <td>$recipient_first_name</td>

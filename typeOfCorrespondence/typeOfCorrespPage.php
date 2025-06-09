@@ -37,7 +37,7 @@ $corresp_type_info = get_all_corresp_type_info();
             <?php
                 for($i = 0; $i < count($corresp_type_info); $i++)
                 {
-                    $corresp_type_id = $corresp_type_info[$i]["typeOfCorrespondenceID"];
+                    $corresp_type_id = $corresp_type_info[$i]["correspTypeID"];
                     $corresp_type_name = $corresp_type_info[$i]["typeName"];
                     echo "<tr><td>$corresp_type_id</td>
                     <td>$corresp_type_name</td>
