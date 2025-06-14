@@ -23,7 +23,7 @@ $corresp_type_info = get_all_corresp_type_info();
             <li><a href="/PostOffice/recipients/recipientsPage.php">Получатели</a></li>
             <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
             <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
-            <li><a href="#games">Заказы</a></li>
+            <li><a href="/PostOffice/orders/ordersPage.php">Заказы</a></li>
         </ul>
     </div>
     <section class = "add_and_find_corresp_type">

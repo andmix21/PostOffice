@@ -1,6 +1,6 @@
 <?php
 include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
-$recipient = get_recipient_info_by_id($_GET['recipientEditById']);
+$order = get_order_info_by_id($_GET['orderEditById']);
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ $recipient = get_recipient_info_by_id($_GET['recipientEditById']);
 </head>
 <body>
     <section class = "beginning", id='home'>
-        <div class = "title_text">РЕДАКТИРОВАНИЕ ДАННЫХ ПОЛУЧАТЕЛЯ</div>
+        <div class = "title_text">РЕДАКТИРОВАНИЕ ДАННЫХ КЛИЕНТА</div>
     </section>
     <div class="nav">
         <ul>
@@ -27,30 +27,37 @@ $recipient = get_recipient_info_by_id($_GET['recipientEditById']);
         </ul>
     </div>
     <section class = "formSection">
-        <form action = "recipientEditByIdController.php" method = "POST" role = 'form'>
-            <input id="id" type="hidden" name="id" value="<?php echo $_GET['recipientEditById'];?>"/>
+        <form action = "clientEditByIdController.php" method = "POST" role = 'form'>
+            <input id="id" type="hidden" name="id" value="<?php echo $_GET['clientEditById'];?>"/>
             <div class = form>
                 <div class = label><label for = "last_name">Фамилия</label>
                     <div>
-                        <input id = "last_name" type = "text" name = "last_name" value = "<?php echo $recipient['recipientLastName']; ?>" required/>
+                        <input id = "last_name" type = "text" name = "last_name" value = "<?php echo $client['clientLastName']; ?>" required/>
                     </div>        
                 </div>
 
                 <div class = label><label for = "first_name">Имя</label>
                     <div>
-                        <input id = "first_name" type = "text" name = "first_name" value = "<?php echo $recipient['recipientFirstName']; ?>" required/>
+                        <input id = "first_name" type = "text" name = "first_name" value = "<?php echo $client['clientFirstName']; ?>" required/>
                     </div>        
                 </div>
 
                 <div class = label><label for = "patronymic">Отчество</label>
                     <div>
-                        <input id = "patronymic" type = "text" name = "patronymic" value = "<?php echo $recipient['recipientPatronymic']; ?>" required/>
+                        <input id = "patronymic" type = "text" name = "patronymic" value = "<?php echo $client['clientPatronymic']; ?>" required/>
+                    </div>        
+                </div>
+
+
+                <div class = label><label for = "passport">Паспорт</label>
+                    <div>
+                        <input id = "passport" type = "text" name = "passport" value = "<?php echo $client['clientPassport']; ?>" required/>
                     </div>        
                 </div>
 
                 <div class = label><label for = "phone">Телефон</label>
                     <div>
-                        <input id = "phone" type = "text" name = "phone" value = "<?php echo $recipient['recipientPhone']; ?>" required/>
+                        <input id = "phone" type = "text" name = "phone" value = "<?php echo $client['clientPhone']; ?>" required/>
                     </div>        
                 </div>
 

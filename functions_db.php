@@ -321,8 +321,68 @@ function worker_search($searchWorker)
     return $res;
 }
 
-//------------------------------Работа с таблицей "status"------------------------------
+//------------------------------Работа с таблицей "orders"------------------------------
 
+//Получение данных из таблицы
+function get_all_orders_info()
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "CALL orders_info()");
+    closeDB();
+    return mysqli_fetch_all($res, MYSQLI_ASSOC);
+}
+
+//Получение данных из таблицы по ID
+function get_order_info_by_id($id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM orders WHERE orderID = $id");
+    closeDB();
+    return mysqli_fetch_assoc($res);
+}
+
+//Добавление нового заказа
+function add_new_order($worker_id, $client_id, $track_code, $corresp_type_id, $corresp_weight, $recipient_id, $department_id, $reg_date)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "INSERT INTO orders (workerID, clientID, trackCode, correspTypeID, correspWeight, recipientID, departmentID, regDate) VALUE ('$worker_id', '$client_id', '$track_code', '$corresp_type_id', '$corresp_weight', '$recipient_id', '$department_id', '$reg_date')");
+    closeDB();
+    return $res;
+}
+//Редактирование данных по ID
+function edit_order_by_id($id, $worker_id, $client_id, $track_code, $corresp_type_id, $corresp_weight, $recipient_id, $department_id, $reg_date)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "UPDATE orders SET workerID = '$worker_id', clientID = '$client_id', trackCode = '$track_code', correspTypeID = '$corresp_type_id', correspWeight = '$corresp_weight', recipientID = '$recipient_id', departmentID = '$department_id', regDate = '$reg_date' WHERE orderID = '$id'");
+    closeDB();
+    return $res;
+}
+
+//Удаление данных по ID
+function delete_order_by_id($order_id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "DELETE FROM orders WHERE orderID = $order_id");
+    closeDB();
+    return $res;
+}
+
+//Поиск заказа
+function order_search($searchOrder)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "CALL order_search($searchOrder)");
+    closeDB();
+    return $res;
+}
+
+//------------------------------Работа с таблицей "status"------------------------------
 //Получение данных из таблицы
 function get_all_status_info()
 {
@@ -381,4 +441,5 @@ function status_search($searchStatus)
     closeDB();
     return $res;
 }
+
 ?>

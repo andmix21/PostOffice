@@ -23,7 +23,7 @@ $status_type = get_status_info_by_id($_GET['statusEditById']);
             <li><a href="/PostOffice/recipients/recipientsPage.php">Получатели</a></li>
             <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
             <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
-            <li><a href="#games">Заказы</a></li>
+            <li><a href="/PostOffice/orders/ordersPage.php">Заказы</a></li>
         </ul>
     </div>
     <section class = "formSection">
