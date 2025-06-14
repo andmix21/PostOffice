@@ -18,12 +18,12 @@ $client = get_client_info_by_id($_GET['clientEditById']);
     <div class="nav">
         <ul>
             <li><a href="#home">Начало</a></li>
+            <li><a href="/PostOffice/mainPage/mainPage.html">Главная</a></li>
             <li><a href="/PostOffice/clients/clientsPage.php">Клиенты</a></li>
             <li><a href="/PostOffice/recipients/recipientsPage.php">Получатели</a></li>
-            <li><a href="#skills">Сотрудники</a></li>
+            <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
             <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
             <li><a href="#games">Заказы</a></li>
-            <li><a href="#end">Конец</a></li>
         </ul>
     </div>
     <section class = "formSection">
@@ -32,32 +32,32 @@ $client = get_client_info_by_id($_GET['clientEditById']);
             <div class = form>
                 <div class = label><label for = "last_name">Фамилия</label>
                     <div>
-                        <input id = "last_name" type = "text" name = "last_name" value = "<?php echo $client['clientLastName']; ?>"/>
+                        <input id = "last_name" type = "text" name = "last_name" value = "<?php echo $client['clientLastName']; ?>" required/>
                     </div>        
                 </div>
 
                 <div class = label><label for = "first_name">Имя</label>
                     <div>
-                        <input id = "first_name" type = "text" name = "first_name" value = "<?php echo $client['clientFirstName']; ?>"/>
+                        <input id = "first_name" type = "text" name = "first_name" value = "<?php echo $client['clientFirstName']; ?>" required/>
                     </div>        
                 </div>
 
                 <div class = label><label for = "patronymic">Отчество</label>
                     <div>
-                        <input id = "patronymic" type = "text" name = "patronymic" value = "<?php echo $client['clientPatronymic']; ?>"/>
+                        <input id = "patronymic" type = "text" name = "patronymic" value = "<?php echo $client['clientPatronymic']; ?>" required/>
                     </div>        
                 </div>
 
 
                 <div class = label><label for = "passport">Паспорт</label>
                     <div>
-                        <input id = "passport" type = "text" name = "passport" value = "<?php echo $client['clientPassport']; ?>"/>
+                        <input id = "passport" type = "text" name = "passport" value = "<?php echo $client['clientPassport']; ?>" required/>
                     </div>        
                 </div>
 
                 <div class = label><label for = "phone">Телефон</label>
                     <div>
-                        <input id = "phone" type = "phone" name = "phone" value = "<?php echo $client['clientPhone']; ?>"/>
+                        <input id = "phone" type = "text" name = "phone" value = "<?php echo $client['clientPhone']; ?>" required/>
                     </div>        
                 </div>
 

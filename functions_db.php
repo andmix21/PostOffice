@@ -267,7 +267,7 @@ function get_all_workers_info()
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "SELECT * FROM workers JOIN department ON workers.departmentID = departments.departmentID ORDER BY workerLastName");
+    $res = mysqli_query($link, "SELECT * FROM workers JOIN departments ON workers.departmentID = departments.departmentID ORDER BY workerLastName");
     closeDB();
     return mysqli_fetch_all($res, MYSQLI_ASSOC);
 }
@@ -282,19 +282,44 @@ function get_worker_info_by_id($id)
     return mysqli_fetch_assoc($res);
 }
 
-//Добавление нового клиента
-function add_new_worker($last_name, $first_name, $patronymic, $gender, $dateOfBirth, $department_id, $wPost)
+//Добавление нового сотрудника
+function add_new_worker($last_name, $first_name, $patronymic, $gender, $date_of_birth, $department_id, $worker_post)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "INSERT INTO workers (workerLastName, workerFirstName, workerPatronymic, gender, dateOfBirth, workerPost) VALUE ('$last_name', '$first_name','$patronymic', '$gender', '$dateOfBirth')");
+    $res = mysqli_query($link, "INSERT INTO workers (workerLastName, workerFirstName, workerPatronymic, gender, dateOfBirth, departmentID, workerPost) VALUE ('$last_name', '$first_name','$patronymic', '$gender', '$date_of_birth', '$department_id', '$worker_post')");
+    closeDB();
+    return $res;
+}
+//Редактирование данных по ID
+function edit_worker_by_id($worker_id, $last_name, $first_name, $patronymic, $gender, $date_of_birth, $department_id, $worker_post)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "UPDATE workers SET workerLastName = '$last_name', workerFirstName = '$first_name', workerPatronymic = '$patronymic', gender = '$gender', dateOfBirth = '$date_of_birth', departmentID = '$department_id', workerPost = '$worker_post' WHERE workerID = $worker_id");
     closeDB();
     return $res;
 }
 
+//Удаление данных по ID
+function delete_worker_by_id($worker_id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "DELETE FROM workers WHERE workerID = $worker_id");
+    closeDB();
+    return $res;
+}
 
-
-
+//Поиск сотрудника
+function worker_search($searchWorker)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM workers JOIN departments ON workers.departmentID = departments.departmentID WHERE workerLastName LIKE '%$searchWorker%' OR workerFirstName LIKE '%$searchWorker%' OR workerPatronymic LIKE '%$searchWorker%' OR workerPost LIKE '%$searchWorker%' ORDER BY workerLastName");
+    closeDB();
+    return $res;
+}
 
 //------------------------------Работа с таблицей "status"------------------------------
 

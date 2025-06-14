@@ -18,12 +18,12 @@ $corresp_type = get_corresp_type_info_by_id($_GET['typeOfCorrespEditById']);
     <div class="nav">
         <ul>
             <li><a href="#home">Начало</a></li>
+            <li><a href="/PostOffice/mainPage/mainPage.html">Главная</a></li>
             <li><a href="/PostOffice/clients/clientsPage.php">Клиенты</a></li>
             <li><a href="/PostOffice/recipients/recipientsPage.php">Получатели</a></li>
-            <li><a href="#skills">Сотрудники</a></li>
+            <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
             <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
             <li><a href="#games">Заказы</a></li>
-            <li><a href="#end">Конец</a></li>
         </ul>
     </div>
     <section class = "formSection">
@@ -32,7 +32,7 @@ $corresp_type = get_corresp_type_info_by_id($_GET['typeOfCorrespEditById']);
             <div class = form>
                 <div class = label><label for = "type_name">Тип</label>
                     <div>
-                        <input id = "type_name" type = "text" name = "type_name" value = "<?php echo $corresp_type['typeName']; ?>"/>
+                        <input id = "type_name" type = "text" name = "type_name" value = "<?php echo $corresp_type['typeName']; ?>" required/>
                     </div>        
                 </div>
                 

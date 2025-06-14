@@ -1,6 +1,7 @@
 <?php
 include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
-$client = get_client_info_by_id($_GET['clientEditById']);
+$worker = get_worker_info_by_id($_GET['workerEditById']);
+$departments_info = get_all_departments_info();
 ?>
 
 <!DOCTYPE html>
@@ -9,55 +10,83 @@ $client = get_client_info_by_id($_GET['clientEditById']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "/PostOffice/formPagesStyle.css">
-    <title>Редактирование данных клиента</title>
+    <title>Редактирование данных сотрудника</title>
 </head>
 <body>
     <section class = "beginning", id='home'>
-        <div class = "title_text">РЕДАКТИРОВАНИЕ ДАННЫХ КЛИЕНТА</div>
+        <div class = "title_text">РЕДАКТИРОВАНИЕ ДАННЫХ СОТРУДНИКА</div>
     </section>
     <div class="nav">
         <ul>
             <li><a href="#home">Начало</a></li>
+            <li><a href="/PostOffice/mainPage/mainPage.html">Главная</a></li>
             <li><a href="/PostOffice/clients/clientsPage.php">Клиенты</a></li>
             <li><a href="/PostOffice/recipients/recipientsPage.php">Получатели</a></li>
-            <li><a href="#skills">Сотрудники</a></li>
+            <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
             <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
             <li><a href="#games">Заказы</a></li>
-            <li><a href="#end">Конец</a></li>
         </ul>
     </div>
     <section class = "formSection">
-        <form action = "clientEditByIdController.php" method = "POST" role = 'form'>
-            <input id="id" type="hidden" name="id" value="<?php echo $_GET['clientEditById'];?>"/>
+        <form action = "workerEditByIdController.php" method = "POST" role = 'form'>
+            <input id="id" type="hidden" name="id" value="<?php echo $_GET['workerEditById'];?>"/>
             <div class = form>
                 <div class = label><label for = "last_name">Фамилия</label>
                     <div>
-                        <input id = "last_name" type = "text" name = "last_name" value = "<?php echo $client['clientLastName']; ?>"/>
+                        <input id = "last_name" type = "text" name = "last_name" value = "<?php echo $worker['workerLastName']; ?>"/>
                     </div>        
                 </div>
 
                 <div class = label><label for = "first_name">Имя</label>
                     <div>
-                        <input id = "first_name" type = "text" name = "first_name" value = "<?php echo $client['clientFirstName']; ?>"/>
+                        <input id = "first_name" type = "text" name = "first_name" value = "<?php echo $worker['workerFirstName']; ?>"/>
                     </div>        
                 </div>
 
                 <div class = label><label for = "patronymic">Отчество</label>
                     <div>
-                        <input id = "patronymic" type = "text" name = "patronymic" value = "<?php echo $client['clientPatronymic']; ?>"/>
+                        <input id = "patronymic" type = "text" name = "patronymic" value = "<?php echo $worker['workerPatronymic']; ?>"/>
                     </div>        
                 </div>
 
-
-                <div class = label><label for = "passport">Паспорт</label>
+                <div class = label><label for = "gender">Пол</label>
                     <div>
-                        <input id = "passport" type = "text" name = "passport" value = "<?php echo $client['clientPassport']; ?>"/>
+                        <input id = "gender" type = "text" name = "gender" value = "<?php echo $worker['gender']; ?>"/>
                     </div>        
                 </div>
 
-                <div class = label><label for = "phone">Телефон</label>
+                <div class = label><label for = "date_of_birth">Дата рождения</label>
                     <div>
-                        <input id = "phone" type = "phone" name = "phone" value = "<?php echo $client['clientPhone']; ?>"/>
+                        <input id = "date_of_birth" type = "date" name = "date_of_birth" value = "<?php echo $worker['dateOfBirth']; ?>"/>
+                    </div>        
+                </div>
+
+                <div class = "label"><label for = "department_id">Место работы</label>
+                    <div>
+                        <select id = "department_id" name = "department_id">
+                            <?php
+                                $depart_id = $worker['departmentID'];
+
+                                for ($i = 0; $i < count($departments_info); $i++)
+                                {
+                                    $id = $departments_info[$i]["departmentID"];
+                                    $department_region = $departments_info[$i]["departmentRegion"];
+                                    $department_city_or_village = $departments_info[$i]["departmentCityOrVillage"];
+                                    $department_address = $departments_info[$i]["departmentAddress"];
+
+                                    $a = "";
+                                    if ($id==$depart_id)
+                                    {$a = 'selected';}
+                                    echo '<option '.$a.' value = "'.$id.'">'.$department_region.', '.$department_city_or_village.', '.$department_address.'</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>        
+                </div>
+
+                <div class = label><label for = "worker_post">Должность</label>
+                    <div>
+                        <input id = "worker_post" type = "text" name = "worker_post" value = "<?php echo $worker['workerPost']; ?>"/>
                     </div>        
                 </div>
 

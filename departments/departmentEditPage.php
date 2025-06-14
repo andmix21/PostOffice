@@ -18,12 +18,12 @@ $department = get_department_Info_By_ID($_GET['departmentEditById']);
     <div class="nav">
         <ul>
             <li><a href="#home">Начало</a></li>
+            <li><a href="/PostOffice/mainPage/mainPage.html">Главная</a></li>
             <li><a href="/PostOffice/clients/clientsPage.php">Клиенты</a></li>
             <li><a href="/PostOffice/recipients/recipientsPage.php">Получатели</a></li>
-            <li><a href="#skills">Сотрудники</a></li>
+            <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
             <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
             <li><a href="#games">Заказы</a></li>
-            <li><a href="#end">Конец</a></li>
         </ul>
     </div>
     <section class = "formSection">
@@ -32,19 +32,19 @@ $department = get_department_Info_By_ID($_GET['departmentEditById']);
             <div class = form>
                 <div class = label><label for = "region">Регион</label>
                     <div>
-                        <input id = "region" type = "text" name = "region" value = "<?php echo $department['departmentRegion']; ?>"/>
+                        <input id = "region" type = "text" name = "region" value = "<?php echo $department['departmentRegion']; ?>" required/>
                     </div>        
                 </div>
 
                 <div class = label><label for = "city_or_village">Населенный пункт</label>
                     <div>
-                        <input id = "city_or_village" type = "text" name = "city_or_village" value = "<?php echo $department['departmentCityOrVillage']; ?>"/>
+                        <input id = "city_or_village" type = "text" name = "city_or_village" value = "<?php echo $department['departmentCityOrVillage']; ?>" required/>
                     </div>        
                 </div>
 
                 <div class = label><label for = "address">Адрес</label>
                     <div>
-                        <input id = "address" type = "text" name = "address" value = "<?php echo $department['departmentAddress']; ?>"/>
+                        <input id = "address" type = "text" name = "address" value = "<?php echo $department['departmentAddress']; ?>" required/>
                     </div>        
                 </div>
 

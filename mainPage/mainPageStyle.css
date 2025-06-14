@@ -56,35 +56,3 @@ a
 	text-decoration: none;
 	font-weight: bold;
 }
-
-/*----------------------------------Оформление формы----------------------------------*/
-.formSection
-{
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-}
-.form
-{
-    background-color: rgb(4, 44, 133);
-    padding: 10px;
-    border: 2px solid rgb(80, 80, 80);
-}
-
-.label
-{
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    padding: 5px;
-}
-
-.button
-{
-    justify-content: center;
-    display: flex;
-}
-
-button
-{
-    margin: 5px;
-}

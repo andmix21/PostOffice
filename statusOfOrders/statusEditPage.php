@@ -18,12 +18,12 @@ $status_type = get_status_info_by_id($_GET['statusEditById']);
     <div class="nav">
         <ul>
             <li><a href="#home">Начало</a></li>
+            <li><a href="/PostOffice/mainPage/mainPage.html">Главная</a></li>
             <li><a href="/PostOffice/clients/clientsPage.php">Клиенты</a></li>
             <li><a href="/PostOffice/recipients/recipientsPage.php">Получатели</a></li>
-            <li><a href="#skills">Сотрудники</a></li>
+            <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
             <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
             <li><a href="#games">Заказы</a></li>
-            <li><a href="#end">Конец</a></li>
         </ul>
     </div>
     <section class = "formSection">
@@ -32,7 +32,7 @@ $status_type = get_status_info_by_id($_GET['statusEditById']);
             <div class = form>
                 <div class = label><label for = "status_name">Статус</label>
                     <div>
-                        <input id = "status_name" type = "text" name = "status_name" value = "<?php echo $status_type['statusName']; ?>"/>
+                        <input id = "status_name" type = "text" name = "status_name" value = "<?php echo $status_type['statusName']; ?>" required/>
                     </div>        
                 </div>
                 
