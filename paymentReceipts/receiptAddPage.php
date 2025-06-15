@@ -1,6 +1,6 @@
 <?php
 include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
-$corresp_type_info = get_all_corresp_type_info();
+
 ?>
 
 <!DOCTYPE html>
@@ -9,11 +9,11 @@ $corresp_type_info = get_all_corresp_type_info();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "/PostOffice/formPagesStyle.css">
-    <title>Добавление новой корреспонденции</title>
+    <title>Добавление чека</title>
 </head>
 <body>
     <section class = "beginning", id='home'>
-        <div class = "title_text">ДОБАВЛЕНИЕ НОВОЙ КОРРЕСПОНДЕНЦИИ</div>
+        <div class = "title_text">ДОБАВЛЕНИЕ ЧЕКА</div>
     </section>
     <div class="nav">
         <ul>
@@ -27,28 +27,12 @@ $corresp_type_info = get_all_corresp_type_info();
         </ul>
     </div>
     <section class = "formSection">
-        <form action = "correspAddController.php" method = "POST" role = 'form'>
+        <form action = "receiptAddController.php" method = "POST" role = 'form'>
+            <input id="order_id" type="text" name="corresp_id" value="<?php echo $_GET['orderAddReceiptById'];?>"/>
             <div class = form>
-                <div class = "label"><label for = "corresp_type_id">Тип</label>
+                <div class = label><label for = "cost">Фамилия</label>
                     <div>
-                        <select id = "corresp_type_id" name = "corresp_type_id">
-                            <?php
-                                for ($i = 0; $i < count($corresp_type_info); $i++)
-                                {
-                                    $corresp_type_id = $corresp_type_info[$i]["correspTypeID"];
-                                    $type_name = $corresp_type_info[$i]["typeName"];
-
-                                    $a = "";
-                                    echo '<option '.$a.' value = "'.$corresp_type_id.'">'.$type_name.'</option>';
-                                }
-                            ?>
-                        </select>
-                    </div>        
-                </div>
-
-                <div class = label><label for = "corresp_weight">Вес</label>
-                    <div>
-                        <input id = "corresp_weight" type = "number" step = 'any' name = "corresp_weight" required/>
+                        <input id = "cost" type = "number" step = 'any' name = "cost" required/>
                     </div>        
                 </div>
 

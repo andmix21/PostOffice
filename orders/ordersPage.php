@@ -38,12 +38,15 @@ $orders_info = get_all_orders_info();
             <a href = "orderAddPage.php">Добавить новый заказ</a>  
         </div>
         <div class = "add_order_button">
-            <a href = "/PostOffice/correspondence/correspPage.php">Корреспонденции</a> 
+            <a href = "/PostOffice/typeOfCorrespondence/typeOfCorrespPage.php">Типы корреспонденций</a>  
+        </div>
+        <div class = "add_order_button">
+            <a href = "/PostOffice/paymentReceipts/receiptPage.php">Чеки на оплату</a> 
         </div>
     </section>
     <div class = "table">
         <table>
-            <thead><th>Код</th><th colspan = 3>Сотрудник</th><th colspan = 3>Пункт отправления</th><th colspan = 4>Данные отправителя</th><th colspan = 3>Параметры корреспонденции</th><th colspan = 4>Данные получателя</th><th colspan = 3>Пункт назначения</th><th>Дата оформ.</th><th>Чек</th><th>Состояние</th><th>Редактировать</th><th>Удалить</th></thead>
+            <thead><th>Код</th><th colspan = 3>Сотрудник</th><th colspan = 3>Пункт отправления</th><th colspan = 4>Данные отправителя</th><th colspan = 2>Параметры корреспонденции</th><th colspan = 4>Данные получателя</th><th colspan = 3>Пункт назначения</th><th>Дата оформ.</th><th>Чек</th><th>Состояние</th><th>Редактировать</th><th>Удалить</th></thead>
             <?php
                 for($i = 0; $i < count($orders_info); $i++)
                 {
@@ -58,7 +61,6 @@ $orders_info = get_all_orders_info();
                     $client_first_name = $orders_info[$i]["clientFirstName"];
                     $client_patronymic = $orders_info[$i]["clientPatronymic"];
                     $client_phone = $orders_info[$i]["clientPhone"];
-                    $track_code = $orders_info[$i]["correspID"];
                     $corresp_type_name = $orders_info[$i]["typeName"];
                     $corresp_weight = $orders_info[$i]["correspWeight"];
                     $recipient_last_name = $orders_info[$i]["recipientLastName"];
@@ -80,7 +82,6 @@ $orders_info = get_all_orders_info();
                     <td>$client_first_name</td>
                     <td>$client_patronymic</td>
                     <td>$client_phone</td>
-                    <td>$track_code</td>
                     <td>$corresp_type_name</td>
                     <td>$corresp_weight</td>
                     <td>$recipient_last_name</td>
@@ -91,7 +92,7 @@ $orders_info = get_all_orders_info();
                     <td>$b_dep_city_or_village</td>
                     <td>$b_dep_address</td>
                     <td>$reg_date</td>
-                    <td><a href = orderEditPage.php?orderEditById=$order_id><img src = '/PostOffice/Resources/check.png'</a></td>
+                    <td><a href = /PostOffice/paymentReceipts/receiptAddPage.php?orderAddReceiptById=$order_id><img src = '/PostOffice/Resources/check.png'</a></td>
                     <td><a href = orderDeleteByIdController.php?orderDelById=$order_id><img src = '/PostOffice/Resources/addStatus.png'</a></td>
                     <td><a href = orderEditPage.php?orderEditById=$order_id><img src = '/PostOffice/Resources/edit.png'</a></td>
                     <td><a href = orderDeleteByIdController.php?orderDelById=$order_id><img src = '/PostOffice/Resources/cross.png'</a></td></tr>";

@@ -27,14 +27,11 @@ $order_info = order_search($searchTerm);
             <li><a href="/PostOffice/orders/ordersPage.php">Заказы</a></li>
         </ul>
     </div>
-    <section class = "add_and_find_order">
-        <div class = "add_order_button">
-            <a href = "orderAddPage.php">Добавить новый заказ</a>
-        </div>
+    <section class = "indent_section">
     </section>
     <div class = "table">
         <table>
-             <thead><th>Код</th><th colspan = 3>Сотрудник</th><th colspan = 3>Пункт отправления</th><th colspan = 4>Данные отправителя</th><th colspan = 3>Параметры корреспонденции</th><th colspan = 4>Данные получателя</th><th colspan = 3>Пункт назначения</th><th>Дата оформ.</th><th>Чек</th><th>Состояние</th><th>Редактировать</th><th>Удалить</th></thead>
+             <thead><th>Код</th><th colspan = 3>Сотрудник</th><th colspan = 3>Пункт отправления</th><th colspan = 4>Данные отправителя</th><th colspan = 2>Параметры корреспонденции</th><th colspan = 4>Данные получателя</th><th colspan = 3>Пункт назначения</th><th>Дата оформ.</th><th>Чек</th><th>Состояние</th><th>Редактировать</th><th>Удалить</th></thead>
             <?php
                 foreach ($order_info as $order)
                 {
@@ -49,7 +46,6 @@ $order_info = order_search($searchTerm);
                     $client_first_name = $order["clientFirstName"];
                     $client_patronymic = $order["clientPatronymic"];
                     $client_phone = $order["clientPhone"];
-                    $track_code = $order["correspID"];
                     $corresp_type_name = $order["typeName"];
                     $corresp_weight = $order["correspWeight"];
                     $recipient_last_name = $order["recipientLastName"];
@@ -71,7 +67,6 @@ $order_info = order_search($searchTerm);
                     <td>$client_first_name</td>
                     <td>$client_patronymic</td>
                     <td>$client_phone</td>
-                    <td>$track_code</td>
                     <td>$corresp_type_name</td>
                     <td>$corresp_weight</td>
                     <td>$recipient_last_name</td>

@@ -1,6 +1,11 @@
 <?php
 include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
 $order = get_order_info_by_id($_GET['orderEditById']);
+$workers_info = get_all_workers_info();
+$clients_info = get_all_clients_info();
+$corresp_type_info = get_all_corresp_type_info();
+$recipients_info = get_all_recipient_info();
+$departments_info = get_all_departments_info();
 ?>
 
 <!DOCTYPE html>
@@ -27,37 +32,131 @@ $order = get_order_info_by_id($_GET['orderEditById']);
         </ul>
     </div>
     <section class = "formSection">
-        <form action = "clientEditByIdController.php" method = "POST" role = 'form'>
-            <input id="id" type="hidden" name="id" value="<?php echo $_GET['clientEditById'];?>"/>
+        <form action = "orderEditByIdController.php" method = "POST" role = 'form'>
+            <input id="id" type="hidden" name="id" value="<?php echo $_GET['orderEditById'];?>"/>
             <div class = form>
-                <div class = label><label for = "last_name">Фамилия</label>
+                <div class = "label"><label for = "worker_id">Сотрудник</label>
                     <div>
-                        <input id = "last_name" type = "text" name = "last_name" value = "<?php echo $client['clientLastName']; ?>" required/>
+                        <select id = "worker_id" name = "worker_id">
+                            <?php
+                                $worker_id = $order['workerID'];
+
+                                for ($i = 0; $i < count($workers_info); $i++)
+                                {
+                                    $id = $workers_info[$i]["workerID"];
+                                    $worker_last_name = $workers_info[$i]["workerLastName"];
+                                    $worker_first_name = $workers_info[$i]["workerFirstName"];
+                                    $worker_patronymic = $workers_info[$i]["workerPatronymic"];
+
+                                    $a = "";
+                                    if ($id==$worker_id)
+                                    {$a = 'selected';}
+                                    echo '<option '.$a.' value = "'.$id.'">'.$worker_last_name.' '.$worker_first_name.' '.$worker_patronymic.'</option>';
+                                }
+                            ?>
+                        </select>
                     </div>        
                 </div>
 
-                <div class = label><label for = "first_name">Имя</label>
+                <div class = "label"><label for = "client_id">Клиент</label>
                     <div>
-                        <input id = "first_name" type = "text" name = "first_name" value = "<?php echo $client['clientFirstName']; ?>" required/>
+                        <select id = "client_id" name = "client_id">
+                            <?php
+                                $client_id = $order['clientID'];
+
+                                for ($i = 0; $i < count($clients_info); $i++)
+                                {
+                                    $id = $clients_info[$i]["clientID"];
+                                    $client_last_name = $clients_info[$i]["clientLastName"];
+                                    $client_first_name = $clients_info[$i]["clientFirstName"];
+                                    $client_patronymic = $clients_info[$i]["clientPatronymic"];
+
+                                    $a = "";
+                                    if ($id==$client_id)
+                                    {$a = 'selected';}
+                                    echo '<option '.$a.' value = "'.$id.'">'.$client_last_name.' '.$client_first_name.' '.$client_patronymic.'</option>';
+                                }
+                            ?>
+                        </select>
                     </div>        
                 </div>
 
-                <div class = label><label for = "patronymic">Отчество</label>
+                <div class = "label"><label for = "corresp_type_id">Тип корреспонденции</label>
                     <div>
-                        <input id = "patronymic" type = "text" name = "patronymic" value = "<?php echo $client['clientPatronymic']; ?>" required/>
+                        <select id = "corresp_type_id" name = "corresp_type_id">
+                            <?php
+                                $corresp_type_id = $order['correspTypeID'];
+
+                                for ($i = 0; $i < count($corresp_type_info); $i++)
+                                {
+                                    $id = $corresp_type_info[$i]["correspTypeID"];
+                                    $corresp_type_name = $corresp_type_info[$i]["typeName"];
+
+                                    $a = "";
+                                    if ($id==$corresp_type_id)
+                                    {$a = 'selected';}
+                                    echo '<option '.$a.' value = "'.$id.'">'.$corresp_type_name.'</option>';
+                                }
+                            ?>
+                        </select>
                     </div>        
                 </div>
 
-
-                <div class = label><label for = "passport">Паспорт</label>
+                <div class = label><label for = "corresp_weight">Вес</label>
                     <div>
-                        <input id = "passport" type = "text" name = "passport" value = "<?php echo $client['clientPassport']; ?>" required/>
+                        <input id = "corresp_weight" type = "number" step = "any" name = "corresp_weight" value = "<?php echo $order['correspWeight']; ?>" required/>
                     </div>        
                 </div>
 
-                <div class = label><label for = "phone">Телефон</label>
+                <div class = "label"><label for = "recipient_id">Получатель</label>
                     <div>
-                        <input id = "phone" type = "text" name = "phone" value = "<?php echo $client['clientPhone']; ?>" required/>
+                        <select id = "recipient_id" name = "recipient_id">
+                            <?php
+                                $recipient_id = $order['recipientID'];
+
+                                for ($i = 0; $i < count($recipients_info); $i++)
+                                {
+                                    $id = $recipients_info[$i]["recipientID"];
+                                    $recipient_last_name = $recipients_info[$i]["recipientLastName"];
+                                    $recipient_first_name = $recipients_info[$i]["recipientFirstName"];
+                                    $recipient_patronymic = $recipients_info[$i]["recipientPatronymic"];
+
+                                    $a = "";
+                                    if ($id==$recipient_id)
+                                    {$a = 'selected';}
+                                    echo '<option '.$a.' value = "'.$id.'">'.$recipient_last_name.' '.$recipient_first_name.' '.$recipient_patronymic.'</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>        
+                </div>
+
+                <div class = "label"><label for = "department_id">Пункт назначения</label>
+                    <div>
+                        <select id = "department_id" name = "department_id">
+                            <?php
+                                $department_id = $order['departmentID'];
+
+                                for ($i = 0; $i < count($departments_info); $i++)
+                                {
+                                    $id = $departments_info[$i]["departmentID"];
+                                    $department_region = $departments_info[$i]["departmentRegion"];
+                                    $department_city_or_village = $departments_info[$i]["departmentCityOrVillage"];
+                                    $department_address = $departments_info[$i]["departmentAddress"];
+
+                                    $a = "";
+                                    if ($id==$department_id)
+                                    {$a = 'selected';}
+                                    echo '<option '.$a.' value = "'.$id.'">'.$department_region.' '.$department_city_or_village.' '.$department_address.'</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>        
+                </div>
+
+                <div class = label><label for = "reg_date">Дата оформления</label>
+                    <div>
+                        <input id = "reg_date" type = "date" name = "reg_date" value = "<?php echo $order['regDate']; ?>" required/>
                     </div>        
                 </div>
 

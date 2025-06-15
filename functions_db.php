@@ -199,68 +199,6 @@ function department_search($searchDepartment)
     return $res;
 }
 
-//------------------------------Работа с таблицей "corresp"------------------------------
-
-//Получение данных из таблицы
-function get_all_corresp_info()
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "SELECT * FROM corresp JOIN corresptype ON corresp.correspTypeID = corresptype.correspTypeID ORDER BY correspID DESC");
-    closeDB();
-    return mysqli_fetch_all($res, MYSQLI_ASSOC);
-}
-
-//Получение данных из таблицы по ID
-function get_corresp_info_by_id($id)
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "SELECT * FROM corresp WHERE correspID = $id");
-    closeDB();
-    return mysqli_fetch_assoc($res);
-}
-
-//Добавление нового типа
-function add_new_corresp($corresp_type_id, $corresp_weight)
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "INSERT INTO corresp (correspTypeID, correspWeight) VALUE ('$corresp_type_id', '$corresp_weight')");
-    closeDB();
-    return $res;
-}
-//Редактирование данных по ID
-function edit_corresp_by_id($id, $corresp_type_id, $corresp_weight)
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "UPDATE corresp SET correspTypeID = '$corresp_type_id', correspWeight = '$corresp_weight' WHERE correspID = $id");
-    closeDB();
-    return $res;
-}
-
-//Удаление данных по ID
-function delete_corresp_by_id($corresp_id)
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "DELETE FROM corresp WHERE correspID = $corresp_id");
-    closeDB();
-    return $res;
-}
-
-//Поиск типа
-function corresp_search($searchCorresp)
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "SELECT * FROM corresp WHERE correespTypeID LIKE '%$searchCorresp%' OR correspWeight LIKE '%$searchCorresp%' ORDER BY DESC");
-    closeDB();
-    return $res;
-}
-
-
 //------------------------------Работа с таблицей "corresptype"------------------------------
 
 //Получение данных из таблицы
@@ -406,20 +344,20 @@ function get_order_info_by_id($id)
 }
 
 //Добавление нового заказа
-function add_new_order($worker_id, $client_id, $track_code, $corresp_type_id, $corresp_weight, $recipient_id, $department_id, $reg_date)
+function add_new_order($worker_id, $client_id, $corresp_type_id, $corresp_weight, $recipient_id, $department_id, $reg_date)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "INSERT INTO orders (workerID, clientID, trackCode, correspTypeID, correspWeight, recipientID, departmentID, regDate) VALUE ('$worker_id', '$client_id', '$track_code', '$corresp_type_id', '$corresp_weight', '$recipient_id', '$department_id', '$reg_date')");
+    $res = mysqli_query($link, "INSERT INTO orders (workerID, clientID, correspTypeID, correspWeight, recipientID, departmentID, regDate) VALUE ('$worker_id', '$client_id', '$corresp_type_id', '$corresp_weight', '$recipient_id', '$department_id', '$reg_date')");
     closeDB();
     return $res;
 }
 //Редактирование данных по ID
-function edit_order_by_id($id, $worker_id, $client_id, $track_code, $corresp_type_id, $corresp_weight, $recipient_id, $department_id, $reg_date)
+function edit_order_by_id($id, $worker_id, $client_id, $corresp_type_id, $corresp_weight, $recipient_id, $department_id, $reg_date)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "UPDATE orders SET workerID = '$worker_id', clientID = '$client_id', trackCode = '$track_code', correspTypeID = '$corresp_type_id', correspWeight = '$corresp_weight', recipientID = '$recipient_id', departmentID = '$department_id', regDate = '$reg_date' WHERE orderID = '$id'");
+    $res = mysqli_query($link, "UPDATE orders SET workerID = '$worker_id', clientID = '$client_id', correspTypeID = '$corresp_type_id', correspWeight = '$corresp_weight', recipientID = '$recipient_id', departmentID = '$department_id', regDate = '$reg_date' WHERE orderID = '$id'");
     closeDB();
     return $res;
 }
@@ -434,12 +372,12 @@ function delete_order_by_id($order_id)
     return $res;
 }
 
-//Поиск заказа
+//Поиск заказа по трек. коду
 function order_search($searchOrder)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "CALL order_info_by_id($searchOrder)");
+    $res = mysqli_query($link, "CALL search_proc($searchOrder)");
     closeDB();
     return $res;
 }
@@ -504,4 +442,63 @@ function status_search($searchStatus)
     return $res;
 }
 
+//------------------------------Работа с таблицей "paymentreceipts"------------------------------
+//Получение данных из таблицы
+function get_all_receipts_info()
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "CALL orders_receipts()");
+    closeDB();
+    return mysqli_fetch_all($res, MYSQLI_ASSOC);
+}
+
+//Получение данных из таблицы по ID
+function get_receipt_info_by_id($id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM paymentreceipts WHERE paymentreceiptID = $id");
+    closeDB();
+    return mysqli_fetch_assoc($res);
+}
+
+//Добавление нового чека
+function add_new_receipt($order_id, $cost)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "INSERT INTO paymentreceipts (orderID, cost) VALUE ('$order_id', '$cost')");
+    closeDB();
+    return $res;
+}
+//Редактирование данных по ID
+function edit_receipt_by_id($id, $order_id, $cost)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "UPDATE paymentreceipts SET orderID = '$order_id', cost = '$cost' WHERE paymentreceiptID = $id");
+    closeDB();
+    return $res;
+}
+
+//Удаление данных по ID
+function delete_receipt_by_id($receipt_id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "DELETE FROM paymentreceipts WHERE paymentreceiptID = $receipt_id");
+    closeDB();
+    return $res;
+}
+
+//Поиск чека по трек. коду
+function receipt_search($search_receipt)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "CALL search_pay_receipt($search_receipt)");
+    closeDB();
+    return $res;
+}
 ?>

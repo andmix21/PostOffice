@@ -2,7 +2,7 @@
 include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
 $workers_info = get_all_workers_info();
 $clients_info = get_all_clients_info();
-$corresp_type_info = get_all_corresp_info();
+$corresp_type_info = get_all_corresp_type_info();
 $recipients_info = get_all_recipient_info();
 $departments_info = get_all_departments_info();
 ?>
@@ -45,7 +45,7 @@ $departments_info = get_all_departments_info();
                                     $worker_patronymic = $workers_info[$i]["workerPatronymic"];
 
                                     $a = "";
-                                    echo '<option '.$a.' value = "'.$worker_id.'">'.$worker_last_name.', '.$worker_first_name.', '.$worker_patronymic.'</option>';
+                                    echo '<option '.$a.' value = "'.$worker_id.'">'.$worker_last_name.' '.$worker_first_name.' '.$worker_patronymic.'</option>';
                                 }
                             ?>
                         </select>
@@ -64,29 +64,33 @@ $departments_info = get_all_departments_info();
                                     $client_patronymic = $clients_info[$i]["clientPatronymic"];
 
                                     $a = "";
-                                    echo '<option '.$a.' value = "'.$client_id.'">'.$client_last_name.', '.$client_first_name.', '.$client_patronymic.'</option>';
+                                    echo '<option '.$a.' value = "'.$client_id.'">'.$client_last_name.' '.$client_first_name.' '.$client_patronymic.'</option>';
                                 }
                             ?>
                         </select>
                     </div>        
                 </div>
 
-                <div class = "label"><label for = "client_id">Корреспонденция</label>
+                <div class = "label"><label for = "corresp_type_id">Тип корреспонденции</label>
                     <div>
-                        <select id = "corresp_id" name = "corresp_id">
+                        <select id = "corresp_type_id" name = "corresp_type_id">
                             <?php
-                                for ($i = 0; $i < count($clients_info); $i++)
+                                for ($i = 0; $i < count($corresp_type_info); $i++)
                                 {
-                                    $client_id = $clients_info[$i]["clientID"];
-                                    $client_last_name = $clients_info[$i]["clientLastName"];
-                                    $client_first_name = $clients_info[$i]["clientFirstName"];
-                                    $client_patronymic = $clients_info[$i]["clientPatronymic"];
+                                    $corresp_type_id = $corresp_type_info[$i]["correspTypeID"];
+                                    $corresp_type_name = $corresp_type_info[$i]["typeName"];
 
                                     $a = "";
-                                    echo '<option '.$a.' value = "'.$client_id.'">'.$client_last_name.', '.$client_first_name.', '.$client_patronymic.'</option>';
+                                    echo '<option '.$a.' value = "'.$corresp_type_id.'">'.$corresp_type_name.'</option>';
                                 }
                             ?>
                         </select>
+                    </div>        
+                </div>
+
+                <div class = label><label for = "corresp_weight">Вес</label>
+                    <div>
+                        <input id = "corresp_weight" type = "number" step = "any" name = "corresp_weight" required/>
                     </div>        
                 </div>
 
@@ -96,13 +100,13 @@ $departments_info = get_all_departments_info();
                             <?php
                                 for ($i = 0; $i < count($recipients_info); $i++)
                                 {
-                                    $recipient_id = $recipients_info[$i]["recipienID"];
-                                    $recipient_last_name = $recipients_info[$i]["recipienLastName"];
-                                    $recipient_first_name = $recipients_info[$i]["recipienFirstName"];
-                                    $recipient_patronymic = $recipients_info[$i]["recipienPatronymic"];
+                                    $recipient_id = $recipients_info[$i]["recipientID"];
+                                    $recipient_last_name = $recipients_info[$i]["recipientLastName"];
+                                    $recipient_first_name = $recipients_info[$i]["recipientFirstName"];
+                                    $recipient_patronymic = $recipients_info[$i]["recipientPatronymic"];
 
                                     $a = "";
-                                    echo '<option '.$a.' value = "'.$recipient_id.'">'.$recipient_last_name.', '.$recipient_first_name.', '.$recipient_patronymic.'</option>';
+                                    echo '<option '.$a.' value = "'.$recipient_id.'">'.$recipient_last_name.' '.$recipient_first_name.' '.$recipient_patronymic.'</option>';
                                 }
                             ?>
                         </select>
@@ -125,6 +129,12 @@ $departments_info = get_all_departments_info();
                                 }
                             ?>
                         </select>
+                    </div>        
+                </div>
+
+                <div class = label><label for = "reg_date">Дата оформления</label>
+                    <div>
+                        <input id = "reg_date" type = "date" name = "reg_date" required/>
                     </div>        
                 </div>
 
