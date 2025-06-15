@@ -377,7 +377,7 @@ function order_search($searchOrder)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "CALL search_proc($searchOrder)");
+    $res = mysqli_query($link, "CALL search_order($searchOrder)");
     closeDB();
     return $res;
 }
@@ -492,7 +492,7 @@ function delete_receipt_by_id($receipt_id)
     return $res;
 }
 
-//Поиск чека по трек. коду
+//Поиск чека по коду заказа
 function receipt_search($search_receipt)
 {
     global $link;

@@ -8,11 +8,11 @@ include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "/PostOffice/formPagesStyle.css">
-    <title>Добавление клиента</title>
+    <title>Добавление типа корреспонденций</title>
 </head>
 <body>
     <section class = "beginning", id='home'>
-        <div class = "title_text">ДОБАВЛЕНИЕ КЛИЕНТА</div>
+        <div class = "title_text">ДОБАВЛЕНИЕ ТИПА КОРРЕСПОНДЕНЦИЙ</div>
     </section>
     <div class="nav">
         <ul>

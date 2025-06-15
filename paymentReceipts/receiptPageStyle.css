@@ -50,7 +50,7 @@ li:first-child{
     border-left: 2px solid rgb(80, 80, 80);
 }
 
-/*----------------------------------Оформление секции добавления и нахождения клиента----------------------------------*/
+/*----------------------------------Оформление секции добавления и нахождения чека----------------------------------*/
 /*Настройка секции*/
 .add_and_find_receipt
 {
@@ -74,6 +74,11 @@ a
 	color: rgb(255, 255, 255);
 	font-weight: bold;
 
+}
+
+.indent_section
+{
+	height: 20px;
 }
 
 /*----------------------------------Оформление таблицы----------------------------------*/
@@ -112,24 +117,24 @@ th:nth-child(1), td:nth-child(1)
 	width: 1%;
 }
 
-th:nth-child(2)
+th:nth-child(2), td:nth-child(2)
+{
+	width: 2%;
+}
+
+th:nth-child(3)
 {
 	width: 10%;
 }
 
-th:nth-child(3), th:nth-child(4), th:nth-child(6), th:nth-child(7)
+th:nth-child(4), th:nth-child(5), th:nth-child(7), th:nth-child(8)
 {
 	width: 15%;
 }
 
-th:nth-child(5), td:nth-child(5)
+th:nth-child(6), td:nth-child(6)
 {
-	width: 12%;
-}
-
-th:nth-child(8)
-{
-	width: 3%;
+	width: 8%;
 }
 
 th:nth-child(9)

@@ -29,7 +29,7 @@ $orders_info = get_all_orders_info();
     <section class = "add_and_find_order">
         <div class = searchdiv>
             <form action="searchResultOrderPage.php" method="GET">
-                <div><label for="search_term">Поиск заказа по трек. коду</label></div>
+                <div><label for="search_term">Поиск заказа по коду</label></div>
                 <div><input type="number" id="search_term" name="search_term" required>
                 <button type="submit">Поиск</button></div>
             </form>

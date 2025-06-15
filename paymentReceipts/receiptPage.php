@@ -29,7 +29,7 @@ $receipts_info = get_all_receipts_info();
     <section class = "add_and_find_receipt">
         <div class = searchdiv>
             <form action="searchResultReceiptPage.php" method="GET">
-                <div><label for="search_term">Поиск чека по трек. коду</label></div>
+                <div><label for="search_term">Поиск чека по коду заказа</label></div>
                 <div><input type="text" id="search_term" name="search_term" required>
                 <button type="submit">Поиск</button></div>
             </form>
@@ -37,11 +37,12 @@ $receipts_info = get_all_receipts_info();
     </section>
     <div class = "table">
         <table>
-            <thead><th>Код</th><th colspan = 3>Сотрудник</th><th colspan = 3>Пункт отправления</th><th colspan = 4>Данные отправителя</th><th colspan = 3>Параметры корреспонденции</th><th colspan = 4>Данные получателя</th><th colspan = 3>Пункт назначения</th><th>Дата оформ.</th><th>Стоимость</th><th>Редактировать</th><th>Удалить</th></thead>
+            <thead><th>Код</th><th>Код заказа</th><th colspan = 3>Сотрудник</th><th colspan = 3>Пункт отправления</th><th colspan = 4>Данные отправителя</th><th colspan = 2>Параметры корреспонденции</th><th colspan = 4>Данные получателя</th><th colspan = 3>Пункт назначения</th><th>Дата оформ.</th><th>Стоимость</th><th>Редактировать</th><th>Удалить</th></thead>
             <?php
                 for($i = 0; $i < count($receipts_info); $i++)
                 {
                     $receipt_id = $receipts_info[$i]["paymentReceiptID"];
+                    $order_id = $receipts_info[$i]["orderID"];
                     $worker_last_name = $receipts_info[$i]["workerLastName"];
                     $worker_first_name = $receipts_info[$i]["workerFirstName"];
                     $worker_patronymic = $receipts_info[$i]["workerPatronymic"];
@@ -52,7 +53,6 @@ $receipts_info = get_all_receipts_info();
                     $client_first_name = $receipts_info[$i]["clientFirstName"];
                     $client_patronymic = $receipts_info[$i]["clientPatronymic"];
                     $client_phone = $receipts_info[$i]["clientPhone"];
-                    $track_code = $receipts_info[$i]["correspID"];
                     $corresp_type_name = $receipts_info[$i]["typeName"];
                     $corresp_weight = $receipts_info[$i]["correspWeight"];
                     $recipient_last_name = $receipts_info[$i]["recipientLastName"];
@@ -65,6 +65,7 @@ $receipts_info = get_all_receipts_info();
                     $reg_date = $receipts_info[$i]["regDate"];
                     $cost = $receipts_info[$i]["cost"];
                     echo "<tr><td>$receipt_id</td>
+                    <td>$order_id</td>
                     <td>$worker_last_name</td>
                     <td>$worker_first_name</td>
                     <td>$worker_patronymic</td>
@@ -75,7 +76,6 @@ $receipts_info = get_all_receipts_info();
                     <td>$client_first_name</td>
                     <td>$client_patronymic</td>
                     <td>$client_phone</td>
-                    <td>$track_code</td>
                     <td>$corresp_type_name</td>
                     <td>$corresp_weight</td>
                     <td>$recipient_last_name</td>
