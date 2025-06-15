@@ -1,6 +1,6 @@
 <?php
 include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
-
+$receipt = get_receipt_info_by_id($_GET['receiptEditById']);
 ?>
 
 <!DOCTYPE html>
@@ -9,11 +9,11 @@ include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "/PostOffice/formPagesStyle.css">
-    <title>Добавление чека</title>
+    <title>Редактирование стоимости</title>
 </head>
 <body>
     <section class = "beginning", id='home'>
-        <div class = "title_text">ДОБАВЛЕНИЕ ЧЕКА</div>
+        <div class = "title_text">РЕДАКТИРОВАНИЕ СТОИМОСТИ</div>
     </section>
     <div class="nav">
         <ul>
@@ -27,17 +27,18 @@ include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
         </ul>
     </div>
     <section class = "formSection">
-        <form action = "receiptAddController.php" method = "POST" role = 'form'>
-            <input id="order_id" type="hidden" name="order_id" value="<?php echo $_GET['orderAddReceiptById'];?>"/>
+        <form action = "receiptEditByIdController.php" method = "POST" role = 'form'>
+            <input id="id" type="hidden" name="id" value="<?php echo $_GET['receiptEditById'];?>"/>
+            <input id="order_id" type="hidden" name="order_id" value="<?php echo $receipt['orderID'];?>"/>
             <div class = form>
                 <div class = label><label for = "cost">Стоимость</label>
                     <div>
-                        <input id = "cost" type = "number" step = 'any' name = "cost" required/>
+                        <input id = "cost" type = "text" name = "cost" value = "<?php echo $receipt['cost']; ?>" required/>
                     </div>        
                 </div>
 
                 <div class = button>
-                    <button type = "submit" name = "add">Добавить</button>
+                    <button type = "submit" name = "add">Изменить</button>
                     <button type = "reset" name = "cancellation" onclick = "window.history.back()">Отмена</button>
                 </div>
             </div>

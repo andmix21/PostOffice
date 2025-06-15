@@ -28,7 +28,7 @@ include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
     </div>
     <section class = "formSection">
         <form action = "receiptAddController.php" method = "POST" role = 'form'>
-            <input id="order_id" type="hidden" name="order_id" value="<?php echo $_GET['orderAddReceiptById'];?>"/>
+            <input id="order_id" type="text" name="order_id" value="<?php echo $_GET['orderAddReceiptById'];?>"/>
             <div class = form>
                 <div class = label><label for = "cost">Стоимость</label>
                     <div>
