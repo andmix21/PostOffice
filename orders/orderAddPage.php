@@ -2,7 +2,7 @@
 include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
 $workers_info = get_all_workers_info();
 $clients_info = get_all_clients_info();
-$corresp_type_info = get_all_corresp_type_info();
+$corresp_type_info = get_all_corresp_info();
 $recipients_info = get_all_recipient_info();
 $departments_info = get_all_departments_info();
 ?>
@@ -71,32 +71,22 @@ $departments_info = get_all_departments_info();
                     </div>        
                 </div>
 
-                <div class = label><label for = "track_code">Трекинговый код</label>
+                <div class = "label"><label for = "client_id">Корреспонденция</label>
                     <div>
-                        <input id = "track_code" type = "number" name = "track_code" required/>
-                    </div>        
-                </div>
-
-                <div class = "label"><label for = "corresp_type_id">Тип корреспонденции</label>
-                    <div>
-                        <select id = "corresp_type_id" name = "corresp_type_id">
+                        <select id = "corresp_id" name = "corresp_id">
                             <?php
                                 for ($i = 0; $i < count($clients_info); $i++)
                                 {
-                                    $corresp_type_id = $corresp_type_info[$i]["correspTypeID"];
-                                    $type_name = $corresp_type_info[$i]["typeName"];
+                                    $client_id = $clients_info[$i]["clientID"];
+                                    $client_last_name = $clients_info[$i]["clientLastName"];
+                                    $client_first_name = $clients_info[$i]["clientFirstName"];
+                                    $client_patronymic = $clients_info[$i]["clientPatronymic"];
 
                                     $a = "";
-                                    echo '<option '.$a.' value = "'.$corresp_type_id.'">'.$type_name.'</option>';
+                                    echo '<option '.$a.' value = "'.$client_id.'">'.$client_last_name.', '.$client_first_name.', '.$client_patronymic.'</option>';
                                 }
                             ?>
                         </select>
-                    </div>        
-                </div>
-
-                <div class = label><label for = "corresp_weight">Вес корреспонденции</label>
-                    <div>
-                        <input id = "corresp_weight" type = "number" step = 'any' name = "corresp_weight" required/>
                     </div>        
                 </div>
 

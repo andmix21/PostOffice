@@ -1,7 +1,7 @@
 <?php
 include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
 $searchTerm = $_GET['search_term'];
-$clients_info = client_search($searchTerm);
+$order_info = order_search($searchTerm);
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@ $clients_info = client_search($searchTerm);
 <head>
     <meta charset = "UTF-8">
     <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
-    <link rel = "stylesheet" href = "clientsPageStyle.css">
+    <link rel = "stylesheet" href = "ordersPageStyle.css">
     <title>Результаты поиска</title>
 </head>
 <body>
@@ -27,33 +27,65 @@ $clients_info = client_search($searchTerm);
             <li><a href="/PostOffice/orders/ordersPage.php">Заказы</a></li>
         </ul>
     </div>
-    <section class = "add_and_find_client">
-        <div class = "add_client_button">
-            <a href = "clientAddPage.php">Добавить нового клиента</a>
+    <section class = "add_and_find_order">
+        <div class = "add_order_button">
+            <a href = "orderAddPage.php">Добавить новый заказ</a>
         </div>
     </section>
     <div class = "table">
         <table>
-            <thead><th>Код</th><th>Фамилия</th><th>Имя</th><th>Отчество</th><th>Паспорт</th><th>Телефон</th><th>Редактировать</th><th>Удалить</th></thead>
+             <thead><th>Код</th><th colspan = 3>Сотрудник</th><th colspan = 3>Пункт отправления</th><th colspan = 4>Данные отправителя</th><th colspan = 3>Параметры корреспонденции</th><th colspan = 4>Данные получателя</th><th colspan = 3>Пункт назначения</th><th>Дата оформ.</th><th>Чек</th><th>Состояние</th><th>Редактировать</th><th>Удалить</th></thead>
             <?php
-                foreach ($clients_info as $client)
+                foreach ($order_info as $order)
                 {
-                    $client_id = $client["clientID"];
-                    $client_last_name = $client["clientLastName"];
-                    $client_first_name = $client["clientFirstName"];
-                    $client_patronymic = $client["clientPatronymic"];
-                    $client_passport = $client["clientPassport"];
-                    $client_phone_number = $client["clientPhone"];
-                    echo "<tr>
-                        <td>$client_id</td>
-                        <td>$client_last_name</td>
-                        <td>$client_first_name</td>
-                        <td>$client_patronymic</td>
-                        <td>$client_passport</td>
-                        <td>$client_phone_number</td>
-                        <td><a href='clientEditPage.php?clientEditById=$client_id'><img src='/PostOffice/Resources/edit.png'></a></td>
-                        <td><a href='clientDeleteByIdController.php?clientDelById=$client_id'><img src='/PostOffice/Resources/cross.png'></a></td>
-                        </tr>";
+                    $order_id = $order["orderID"];
+                    $worker_last_name = $order["workerLastName"];
+                    $worker_first_name = $order["workerFirstName"];
+                    $worker_patronymic = $order["workerPatronymic"];
+                    $a_dep_region = $order["A_depRegion"];
+                    $a_dep_city_or_village = $order["A_depCityOrVillage"];
+                    $a_dep_address = $order["A_depAddress"];
+                    $client_last_name = $order["clientLastName"];
+                    $client_first_name = $order["clientFirstName"];
+                    $client_patronymic = $order["clientPatronymic"];
+                    $client_phone = $order["clientPhone"];
+                    $track_code = $order["correspID"];
+                    $corresp_type_name = $order["typeName"];
+                    $corresp_weight = $order["correspWeight"];
+                    $recipient_last_name = $order["recipientLastName"];
+                    $recipient_first_name = $order["recipientFirstName"];
+                    $recipient_patronymic = $order["recipientPatronymic"];
+                    $recipient_phone = $order["recipientPhone"];
+                    $b_dep_region = $order["B_depRegion"];
+                    $b_dep_city_or_village = $order["B_depCityOrVillage"];
+                    $b_dep_address = $order["B_depAddress"];
+                    $reg_date = $order["regDate"];
+                    echo "<tr><td>$order_id</td>
+                    <td>$worker_last_name</td>
+                    <td>$worker_first_name</td>
+                    <td>$worker_patronymic</td>
+                    <td>$a_dep_region</td>
+                    <td>$a_dep_city_or_village</td>
+                    <td>$a_dep_address</td>
+                    <td>$client_last_name</td>
+                    <td>$client_first_name</td>
+                    <td>$client_patronymic</td>
+                    <td>$client_phone</td>
+                    <td>$track_code</td>
+                    <td>$corresp_type_name</td>
+                    <td>$corresp_weight</td>
+                    <td>$recipient_last_name</td>
+                    <td>$recipient_first_name</td>
+                    <td>$recipient_patronymic</td>
+                    <td>$recipient_phone</td>
+                    <td>$b_dep_region</td>
+                    <td>$b_dep_city_or_village</td>
+                    <td>$b_dep_address</td>
+                    <td>$reg_date</td>
+                    <td><a href = orderEditPage.php?orderEditById=$order_id><img src = '/PostOffice/Resources/check.png'</a></td>
+                    <td><a href = orderDeleteByIdController.php?orderDelById=$order_id><img src = '/PostOffice/Resources/addStatus.png'</a></td>
+                    <td><a href = orderEditPage.php?orderEditById=$order_id><img src = '/PostOffice/Resources/edit.png'</a></td>
+                    <td><a href = orderDeleteByIdController.php?orderDelById=$order_id><img src = '/PostOffice/Resources/cross.png'</a></td></tr>";
                 }
             ?>
         </table>

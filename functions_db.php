@@ -199,6 +199,68 @@ function department_search($searchDepartment)
     return $res;
 }
 
+//------------------------------Работа с таблицей "corresp"------------------------------
+
+//Получение данных из таблицы
+function get_all_corresp_info()
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM corresp JOIN corresptype ON corresp.correspTypeID = corresptype.correspTypeID ORDER BY correspID DESC");
+    closeDB();
+    return mysqli_fetch_all($res, MYSQLI_ASSOC);
+}
+
+//Получение данных из таблицы по ID
+function get_corresp_info_by_id($id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM corresp WHERE correspID = $id");
+    closeDB();
+    return mysqli_fetch_assoc($res);
+}
+
+//Добавление нового типа
+function add_new_corresp($corresp_type_id, $corresp_weight)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "INSERT INTO corresp (correspTypeID, correspWeight) VALUE ('$corresp_type_id', '$corresp_weight')");
+    closeDB();
+    return $res;
+}
+//Редактирование данных по ID
+function edit_corresp_by_id($id, $corresp_type_id, $corresp_weight)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "UPDATE corresp SET correspTypeID = '$corresp_type_id', correspWeight = '$corresp_weight' WHERE correspID = $id");
+    closeDB();
+    return $res;
+}
+
+//Удаление данных по ID
+function delete_corresp_by_id($corresp_id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "DELETE FROM corresp WHERE correspID = $corresp_id");
+    closeDB();
+    return $res;
+}
+
+//Поиск типа
+function corresp_search($searchCorresp)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM corresp WHERE correespTypeID LIKE '%$searchCorresp%' OR correspWeight LIKE '%$searchCorresp%' ORDER BY DESC");
+    closeDB();
+    return $res;
+}
+
+
 //------------------------------Работа с таблицей "corresptype"------------------------------
 
 //Получение данных из таблицы
@@ -377,7 +439,7 @@ function order_search($searchOrder)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "CALL order_search($searchOrder)");
+    $res = mysqli_query($link, "CALL order_info_by_id($searchOrder)");
     closeDB();
     return $res;
 }

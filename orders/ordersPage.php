@@ -30,7 +30,7 @@ $orders_info = get_all_orders_info();
         <div class = searchdiv>
             <form action="searchResultOrderPage.php" method="GET">
                 <div><label for="search_term">Поиск заказа по трек. коду</label></div>
-                <div><input type="text" id="search_term" name="search_term" required>
+                <div><input type="number" id="search_term" name="search_term" required>
                 <button type="submit">Поиск</button></div>
             </form>
         </div>
@@ -38,12 +38,12 @@ $orders_info = get_all_orders_info();
             <a href = "orderAddPage.php">Добавить новый заказ</a>  
         </div>
         <div class = "add_order_button">
-            <a href = "/PostOffice/typeOfCorrespondence/typeOfCorrespPage.php">Типы корреспонденций</a> 
+            <a href = "/PostOffice/correspondence/correspPage.php">Корреспонденции</a> 
         </div>
     </section>
     <div class = "table">
         <table>
-            <thead><th>Код</th><th colspan = 3>Сотрудник</th><th colspan = 3>Пункт отправления</th><th colspan = 4>Данные отправителя</th><th>Трекинговый код</th><th colspan = 2>Параметры корреспонденции</th><th colspan = 4>Данные получателя</th><th colspan = 3>Пункт назначения</th><th>Дата оформ.</th><th>Чек</th><th>Состояние</th><th>Редактировать</th><th>Удалить</th></thead>
+            <thead><th>Код</th><th colspan = 3>Сотрудник</th><th colspan = 3>Пункт отправления</th><th colspan = 4>Данные отправителя</th><th colspan = 3>Параметры корреспонденции</th><th colspan = 4>Данные получателя</th><th colspan = 3>Пункт назначения</th><th>Дата оформ.</th><th>Чек</th><th>Состояние</th><th>Редактировать</th><th>Удалить</th></thead>
             <?php
                 for($i = 0; $i < count($orders_info); $i++)
                 {
@@ -58,7 +58,7 @@ $orders_info = get_all_orders_info();
                     $client_first_name = $orders_info[$i]["clientFirstName"];
                     $client_patronymic = $orders_info[$i]["clientPatronymic"];
                     $client_phone = $orders_info[$i]["clientPhone"];
-                    $track_code = $orders_info[$i]["trackCode"];
+                    $track_code = $orders_info[$i]["correspID"];
                     $corresp_type_name = $orders_info[$i]["typeName"];
                     $corresp_weight = $orders_info[$i]["correspWeight"];
                     $recipient_last_name = $orders_info[$i]["recipientLastName"];

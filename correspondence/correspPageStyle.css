@@ -2,7 +2,7 @@ body
 {
 	font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(154, 205, 253);
-	min-width: 4000px;
+	min-width: 1000px;
 	margin: 0px;
 }
 
@@ -50,16 +50,16 @@ li:first-child{
     border-left: 2px solid rgb(80, 80, 80);
 }
 
-/*----------------------------------Оформление секции добавления и нахождения заказа----------------------------------*/
+/*----------------------------------Оформление секции добавления и нахождения отделения----------------------------------*/
 /*Настройка секции*/
-.add_and_find_order
+.add_and_find_corresp
 {
 	display: flex;
 	justify-content: center;
 }
 
 /*Настройка ссылок*/
-.add_order_button
+.add_corresp_button
 {
 	padding: 5px;
 	margin: 15px;
@@ -85,6 +85,7 @@ a
 	font-weight: bold;
 
 }
+
 
 /*----------------------------------Оформление таблицы----------------------------------*/
 table
@@ -116,43 +117,5 @@ table td
 	text-align: center;
 }
 
-/*Размеры столбцов таблицы*/
-th:nth-child(1), td:nth-child(1)
-{
-	width: 1%;
-}
 
-th:nth-child(2)
-{
-	width: 10%;
-}
 
-th:nth-child(3), th:nth-child(4), th:nth-child(6), th:nth-child(7)
-{
-	width: 15%;
-}
-
-th:nth-child(5), td:nth-child(5)
-{
-	width: 12%;
-}
-
-th:nth-child(8)
-{
-	width: 3%;
-}
-
-th:nth-child(9)
-{
-	width: 1%;
-}
-
-th:nth-child(10)
-{
-	width: 3%;
-}
-
-th:nth-child(11), th:nth-child(12)
-{
-	width: 3%;
-}
