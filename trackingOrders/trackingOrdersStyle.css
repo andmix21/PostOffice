@@ -50,19 +50,12 @@ li:first-child{
     border-left: 2px solid rgb(80, 80, 80);
 }
 
-/*----------------------------------Оформление секции добавления и нахождения чека----------------------------------*/
+/*----------------------------------Оформление секции поиска----------------------------------*/
 /*Настройка секции*/
-.add_and_find_receipt
+.search_order_status
 {
 	display: flex;
 	justify-content: center;
-}
-
-a
-{
-	color: rgb(255, 255, 255);
-	text-decoration: none;
-	font-weight: bold;
 }
 
 .searchdiv
@@ -109,7 +102,3 @@ table td
 	overflow: hidden;
 	text-align: center;
 }
-
-
-
-
