@@ -18,13 +18,13 @@ $workers_info = get_all_workers_info();
     </section>
     <div class="nav">
         <ul>
-            <li><a href="#home">Начало</a></li>
-            <li><a href="/PostOffice/mainPage/mainPage.html">Главная</a></li>
+            <li><a href="#home">Начало страницы</a></li>
+            <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
+            <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
             <li><a href="/PostOffice/clients/clientsPage.php">Клиенты</a></li>
             <li><a href="/PostOffice/recipients/recipientsPage.php">Получатели</a></li>
-            <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
-            <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
             <li><a href="/PostOffice/orders/ordersPage.php">Заказы</a></li>
+            <li><a href="/PostOffice/tabPartOrders/statusOrderPage.php">Состояния заказов</a></li>
         </ul>
     </div>
     <section class = "add_and_find_worker">

@@ -1,5 +1,6 @@
 <?php
 include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
+$status_info = get_all_status_info();
 $departments_info = get_all_departments_info();
 ?>
 
@@ -9,11 +10,11 @@ $departments_info = get_all_departments_info();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "/PostOffice/formPagesStyle.css">
-    <title>Добавление сотрудника</title>
+    <title>Добавление состояния заказа</title>
 </head>
 <body>
     <section class = "beginning", id='home'>
-        <div class = "title_text">ДОБАВЛЕНИЕ СОТРУДНИКА</div>
+        <div class = "title_text">ДОБАВЛЕНИЕ СОСТОЯНИЯ ЗАКАЗА №<?php echo $_GET['statusOrderAddById'];?></div>
     </section>
     <div class="nav">
         <ul>
@@ -27,60 +28,48 @@ $departments_info = get_all_departments_info();
         </ul>
     </div>
     <section class = "formSection">
-        <form action = "workerAddController.php" method = "POST" role = 'form'>
+        <form action = "statusOrderAddController.php" method = "POST" role = 'form'>
+            <input id="order_id" type="hidden" name="order_id" value="<?php echo $_GET['statusOrderAddById'];?>"/>
             <div class = form>
-                <div class = label><label for = "last_name">Фамилия</label>
+                <div class = "label"><label for = "status_id"></label>
                     <div>
-                        <input id = "last_name" type = "text" name = "last_name" required/>
-                    </div>        
-                </div>
-
-                <div class = label><label for = "first_name">Имя</label>
-                    <div>
-                        <input id = "first_name" type = "text" name = "first_name" required/>
-                    </div>        
-                </div>
-
-                <div class = label><label for = "patronymic">Отчество</label>
-                    <div>
-                        <input id = "patronymic" type = "text" name = "patronymic" required/>
-                    </div>        
-                </div>
-
-                <div class = label><label for = "gender">Пол</label>
-                    <div>
-                        <input id = "gender" type = "text" name = "gender" required/>
-                    </div>        
-                </div>
-
-                <div class = label><label for = "date_оf_birth">Дата рождения</label>
-                    <div>
-                        <input id = "date_оf_birth" type = "date" name = "date_оf_birth" required/>
-                    </div>        
-                </div>
-
-                <div class = "label"><label for = "department_id">Место работы</label>
-                    <div>
-                        <select id = "department_id" name = "department_id">
+                        <select id = "status_id" name = "status_id">
                             <?php
-                                for ($i = 0; $i < count($departments_info); $i++)
+                                for ($i = 0; $i < count($status_info); $i++)
                                 {
-                                    $id = $departments_info[$i]["departmentID"];
-                                    $department_region = $departments_info[$i]["departmentRegion"];
-                                    $department_city_or_village = $departments_info[$i]["departmentCityOrVillage"];
-                                    $department_address = $departments_info[$i]["departmentAddress"];
+                                    $status_id = $status_info[$i]["statusID"];
+                                    $status_name = $status_info[$i]["statusName"];
 
                                     $a = "";
-                                    echo '<option '.$a.' value = "'.$id.'">'.$department_region.', '.$department_city_or_village.', '.$department_address.'</option>';
+                                    echo '<option '.$a.' value = "'.$status_id.'">'.$status_name.'</option>';
                                 }
                             ?>
                         </select>
                     </div>        
                 </div>
 
-                <div class = label><label for = "worker_post">Должность</label>
+                <div class = "label"><label for = "department_id">Пункт фиксации</label>
                     <div>
-                        <input id = "worker_post" type = "text" name = "worker_post" required/>
+                        <select id = "department_id" name = "department_id">
+                            <?php
+                                for ($i = 0; $i < count($departments_info); $i++)
+                                {
+                                    $department_id = $departments_info[$i]["departmentID"];
+                                    $department_region = $departments_info[$i]["departmentRegion"];
+                                    $department_city_or_village = $departments_info[$i]["departmentCityOrVillage"];
+                                    $department_address = $departments_info[$i]["departmentAddress"];
+
+                                    $a = "";
+                                    echo '<option '.$a.' value = "'.$department_id.'">'.$department_region.', '.$department_city_or_village.', '.$department_address.'</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>        
+                </div>
+
+                <div class = label><label for = "date_of_fix">Дата фиксации</label>
+                    <div>
+                        <input id = "date_of_fix" type = "date" name = "date_of_fix" required/>
                     </div>        
                 </div>
 

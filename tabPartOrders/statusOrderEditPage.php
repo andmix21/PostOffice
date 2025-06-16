@@ -1,6 +1,7 @@
 <?php
 include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
-$worker = get_worker_info_by_id($_GET['workerEditById']);
+$status_order_info = get_status_order_info_by_id($_GET['statusOrderEditById']);
+$status_info = get_all_status_info();
 $departments_info = get_all_departments_info();
 ?>
 
@@ -10,11 +11,11 @@ $departments_info = get_all_departments_info();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "/PostOffice/formPagesStyle.css">
-    <title>Редактирование данных сотрудника</title>
+    <title>Редактирование состояния заказа</title>
 </head>
 <body>
     <section class = "beginning", id='home'>
-        <div class = "title_text">РЕДАКТИРОВАНИЕ ДАННЫХ СОТРУДНИКА</div>
+        <div class = "title_text">РЕДАКТИРОВАНИЕ СОСТОЯНИЯ ЗАКАЗА №<?php echo $status_order_info['orderID'];?></div>
     </section>
     <div class="nav">
         <ul>
@@ -28,44 +29,36 @@ $departments_info = get_all_departments_info();
         </ul>
     </div>
     <section class = "formSection">
-        <form action = "workerEditByIdController.php" method = "POST" role = 'form'>
-            <input id="id" type="hidden" name="id" value="<?php echo $_GET['workerEditById'];?>"/>
+        <form action = "statusOrderEditByIdController.php" method = "POST" role = 'form'>
+            <input id="id" type="hidden" name="id" value="<?php echo $_GET['statusOrderEditById'];?>"/>
+            <input id="order_id" type="hidden" name="order_id" value="<?php echo $status_order_info['orderID'];?>"/>
             <div class = form>
-                <div class = label><label for = "last_name">Фамилия</label>
+                <div class = "label"><label for = "status_id">Статус</label>
                     <div>
-                        <input id = "last_name" type = "text" name = "last_name" value = "<?php echo $worker['workerLastName']; ?>"/>
+                        <select id = "status_id" name = "status_id">
+                            <?php
+                                $status_id = $status_order_info['statusID'];
+
+                                for ($i = 0; $i < count($status_info); $i++)
+                                {
+                                    $id = $status_info[$i]["statusID"];
+                                    $status_name = $status_info[$i]["statusName"];
+
+                                    $a = "";
+                                    if ($id==$status_id)
+                                    {$a = 'selected';}
+                                    echo '<option '.$a.' value = "'.$id.'">'.$status_name.'</option>';
+                                }
+                            ?>
+                        </select>
                     </div>        
                 </div>
 
-                <div class = label><label for = "first_name">Имя</label>
-                    <div>
-                        <input id = "first_name" type = "text" name = "first_name" value = "<?php echo $worker['workerFirstName']; ?>"/>
-                    </div>        
-                </div>
-
-                <div class = label><label for = "patronymic">Отчество</label>
-                    <div>
-                        <input id = "patronymic" type = "text" name = "patronymic" value = "<?php echo $worker['workerPatronymic']; ?>"/>
-                    </div>        
-                </div>
-
-                <div class = label><label for = "gender">Пол</label>
-                    <div>
-                        <input id = "gender" type = "text" name = "gender" value = "<?php echo $worker['gender']; ?>"/>
-                    </div>        
-                </div>
-
-                <div class = label><label for = "date_of_birth">Дата рождения</label>
-                    <div>
-                        <input id = "date_of_birth" type = "date" name = "date_of_birth" value = "<?php echo $worker['dateOfBirth']; ?>"/>
-                    </div>        
-                </div>
-
-                <div class = "label"><label for = "department_id">Место работы</label>
+                <div class = "label"><label for = "department_id">Клиент</label>
                     <div>
                         <select id = "department_id" name = "department_id">
                             <?php
-                                $depart_id = $worker['departmentID'];
+                                $department_id = $status_order_info['departmentID'];
 
                                 for ($i = 0; $i < count($departments_info); $i++)
                                 {
@@ -75,18 +68,18 @@ $departments_info = get_all_departments_info();
                                     $department_address = $departments_info[$i]["departmentAddress"];
 
                                     $a = "";
-                                    if ($id==$depart_id)
+                                    if ($id==$department_id)
                                     {$a = 'selected';}
-                                    echo '<option '.$a.' value = "'.$id.'">'.$department_region.', '.$department_city_or_village.', '.$department_address.'</option>';
+                                    echo '<option '.$a.' value = "'.$id.'">'.$department_region.' '.$department_city_or_village.' '.$department_address.'</option>';
                                 }
                             ?>
                         </select>
                     </div>        
                 </div>
 
-                <div class = label><label for = "worker_post">Должность</label>
+                <div class = label><label for = "date_of_fix">Дата фиксации</label>
                     <div>
-                        <input id = "worker_post" type = "text" name = "worker_post" value = "<?php echo $worker['workerPost']; ?>"/>
+                        <input id = "date_of_fix" type = "date" name = "date_of_fix" value = "<?php echo $status_order_info['dateOfFix']; ?>" required/>
                     </div>        
                 </div>
 

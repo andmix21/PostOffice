@@ -18,17 +18,17 @@ $departments_info = get_all_departments_info();
 </head>
 <body>
     <section class = "beginning", id='home'>
-        <div class = "title_text">РЕДАКТИРОВАНИЕ ДАННЫХ КЛИЕНТА</div>
+        <div class = "title_text">РЕДАКТИРОВАНИЕ ДАННЫХ ЗАКАЗА №<?php echo $_GET['orderEditById'];?></div>
     </section>
     <div class="nav">
         <ul>
-            <li><a href="#home">Начало</a></li>
-            <li><a href="/PostOffice/mainPage/mainPage.html">Главная</a></li>
+            <li><a href="#home">Начало страницы</a></li>
+            <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
+            <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
             <li><a href="/PostOffice/clients/clientsPage.php">Клиенты</a></li>
             <li><a href="/PostOffice/recipients/recipientsPage.php">Получатели</a></li>
-            <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
-            <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
             <li><a href="/PostOffice/orders/ordersPage.php">Заказы</a></li>
+            <li><a href="/PostOffice/tabPartOrders/statusOrderPage.php">Состояния заказов</a></li>
         </ul>
     </div>
     <section class = "formSection">

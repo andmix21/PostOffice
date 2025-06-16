@@ -442,4 +442,64 @@ function status_search($searchStatus)
     return $res;
 }
 
+//------------------------------Работа с таблицей "tabpartorders"------------------------------
+//Получение данных из таблицы
+function get_all_status_orders_info()
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "CALL tab_part_orders_info()");
+    closeDB();
+    return mysqli_fetch_all($res, MYSQLI_ASSOC);
+}
+
+//Получение данных из таблицы по ID заказа
+function get_status_order_info_by_id($id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "SELECT * FROM tabpartorders WHERE tabPartOrderID = $id");
+    closeDB();
+    return mysqli_fetch_assoc($res);
+}
+
+//Добавление нового состояния заказа
+function add_new_status_order($order_id, $status_id, $department_id, $date_of_fix)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "INSERT INTO tabpartorders (orderID, statusID, departmentID, dateOfFix) VALUE ('$order_id', '$status_id', '$department_id', '$date_of_fix')");
+    closeDB();
+    return $res;
+}
+//Редактирование данных по ID
+function edit_status_order_by_id($id, $order_id, $status_id, $department_id, $date_of_fix)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "UPDATE tabpartorders SET orderID = '$order_id', statusID = '$status_id', departmentID = '$department_id', dateOfFix = '$date_of_fix' WHERE tabPartOrderID = $id");
+    closeDB();
+    return $res;
+}
+
+//Удаление данных по ID
+function delete_status_order_by_id($status_order_id)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "DELETE FROM tabpartorders WHERE tabPartOrderID = $status_order_id");
+    closeDB();
+    return $res;
+}
+
+//Поиск состояния заказа
+function status_order_search($searchStatusOrder)
+{
+    global $link;
+    openDB();
+    $res = mysqli_query($link, "CALL search_tab_part_order_info($searchStatusOrder)");
+    closeDB();
+    return $res;
+}
+
 ?>

@@ -149,15 +149,15 @@ th:nth-child(8)
 
 th:nth-child(9)
 {
-	width: 1%;
+	width: 3%;
 }
 
 th:nth-child(10)
 {
-	width: 3%;
+	width: 2%;
 }
 
 th:nth-child(11), th:nth-child(12)
 {
-	width: 3%;
+	width: 2%;
 }
