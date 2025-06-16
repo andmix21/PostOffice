@@ -40,13 +40,10 @@ $orders_info = get_all_orders_info();
         <div class = "add_order_button">
             <a href = "/PostOffice/typeOfCorrespondence/typeOfCorrespPage.php">Типы корреспонденций</a>  
         </div>
-        <div class = "add_order_button">
-            <a href = "/PostOffice/paymentReceipts/receiptPage.php">Чеки на оплату</a> 
-        </div>
     </section>
     <div class = "table">
         <table>
-            <thead><th>Код</th><th colspan = 3>Сотрудник</th><th colspan = 3>Пункт отправления</th><th colspan = 4>Данные отправителя</th><th colspan = 2>Параметры корреспонденции</th><th colspan = 4>Данные получателя</th><th colspan = 3>Пункт назначения</th><th>Дата оформ.</th><th>Чек</th><th>Состояние</th><th>Редактировать</th><th>Удалить</th></thead>
+            <thead><th>Код</th><th colspan = 3>Сотрудник</th><th colspan = 3>Пункт отправления</th><th colspan = 4>Данные отправителя</th><th colspan = 2>Параметры корреспонденции</th><th colspan = 4>Данные получателя</th><th colspan = 3>Пункт назначения</th><th>Стоимость</th><th>Дата оформ.</th><th>Состояние</th><th>Редактировать</th><th>Удалить</th></thead>
             <?php
                 for($i = 0; $i < count($orders_info); $i++)
                 {
@@ -70,6 +67,7 @@ $orders_info = get_all_orders_info();
                     $b_dep_region = $orders_info[$i]["B_depRegion"];
                     $b_dep_city_or_village = $orders_info[$i]["B_depCityOrVillage"];
                     $b_dep_address = $orders_info[$i]["B_depAddress"];
+                    $cost = $orders_info[$i]["cost"];
                     $reg_date = $orders_info[$i]["regDate"];
                     echo "<tr><td>$order_id</td>
                     <td>$worker_last_name</td>
@@ -91,8 +89,8 @@ $orders_info = get_all_orders_info();
                     <td>$b_dep_region</td>
                     <td>$b_dep_city_or_village</td>
                     <td>$b_dep_address</td>
+                    <td>$cost</td>
                     <td>$reg_date</td>
-                    <td><a href = /PostOffice/paymentReceipts/receiptAddPage.php?orderAddReceiptById=$order_id><img src = '/PostOffice/Resources/check.png'</a></td>
                     <td><a href = orderDeleteByIdController.php?orderDelById=$order_id><img src = '/PostOffice/Resources/addStatus.png'</a></td>
                     <td><a href = orderEditPage.php?orderEditById=$order_id><img src = '/PostOffice/Resources/edit.png'</a></td>
                     <td><a href = orderDeleteByIdController.php?orderDelById=$order_id><img src = '/PostOffice/Resources/cross.png'</a></td></tr>";

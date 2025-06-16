@@ -55,6 +55,7 @@ $order_info = order_search($searchTerm);
                     $b_dep_region = $order["B_depRegion"];
                     $b_dep_city_or_village = $order["B_depCityOrVillage"];
                     $b_dep_address = $order["B_depAddress"];
+                    $cost = $order["cost"];
                     $reg_date = $order["regDate"];
                     echo "<tr><td>$order_id</td>
                     <td>$worker_last_name</td>
@@ -76,8 +77,8 @@ $order_info = order_search($searchTerm);
                     <td>$b_dep_region</td>
                     <td>$b_dep_city_or_village</td>
                     <td>$b_dep_address</td>
+                    <td>$cost</td>
                     <td>$reg_date</td>
-                    <td><a href = orderEditPage.php?orderEditById=$order_id><img src = '/PostOffice/Resources/check.png'</a></td>
                     <td><a href = orderDeleteByIdController.php?orderDelById=$order_id><img src = '/PostOffice/Resources/addStatus.png'</a></td>
                     <td><a href = orderEditPage.php?orderEditById=$order_id><img src = '/PostOffice/Resources/edit.png'</a></td>
                     <td><a href = orderDeleteByIdController.php?orderDelById=$order_id><img src = '/PostOffice/Resources/cross.png'</a></td></tr>";

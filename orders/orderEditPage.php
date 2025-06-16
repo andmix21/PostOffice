@@ -154,6 +154,12 @@ $departments_info = get_all_departments_info();
                     </div>        
                 </div>
 
+                <div class = label><label for = "cost">Стоимость</label>
+                    <div>
+                        <input id = "cost" type = "number" step = "any" name = "cost" value = "<?php echo $order['cost']; ?>" required/>
+                    </div>        
+                </div>
+
                 <div class = label><label for = "reg_date">Дата оформления</label>
                     <div>
                         <input id = "reg_date" type = "date" name = "reg_date" value = "<?php echo $order['regDate']; ?>" required/>

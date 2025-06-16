@@ -344,20 +344,20 @@ function get_order_info_by_id($id)
 }
 
 //Добавление нового заказа
-function add_new_order($worker_id, $client_id, $corresp_type_id, $corresp_weight, $recipient_id, $department_id, $reg_date)
+function add_new_order($worker_id, $client_id, $corresp_type_id, $corresp_weight, $recipient_id, $department_id, $cost, $reg_date)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "INSERT INTO orders (workerID, clientID, correspTypeID, correspWeight, recipientID, departmentID, regDate) VALUE ('$worker_id', '$client_id', '$corresp_type_id', '$corresp_weight', '$recipient_id', '$department_id', '$reg_date')");
+    $res = mysqli_query($link, "INSERT INTO orders (workerID, clientID, correspTypeID, correspWeight, recipientID, departmentID, cost, regDate) VALUE ('$worker_id', '$client_id', '$corresp_type_id', '$corresp_weight', '$recipient_id', '$department_id', '$cost', '$reg_date')");
     closeDB();
     return $res;
 }
 //Редактирование данных по ID
-function edit_order_by_id($id, $worker_id, $client_id, $corresp_type_id, $corresp_weight, $recipient_id, $department_id, $reg_date)
+function edit_order_by_id($id, $worker_id, $client_id, $corresp_type_id, $corresp_weight, $recipient_id, $department_id, $cost, $reg_date)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "UPDATE orders SET workerID = '$worker_id', clientID = '$client_id', correspTypeID = '$corresp_type_id', correspWeight = '$corresp_weight', recipientID = '$recipient_id', departmentID = '$department_id', regDate = '$reg_date' WHERE orderID = '$id'");
+    $res = mysqli_query($link, "UPDATE orders SET workerID = '$worker_id', clientID = '$client_id', correspTypeID = '$corresp_type_id', correspWeight = '$corresp_weight', recipientID = '$recipient_id', departmentID = '$department_id', cost = '$cost', regDate = '$reg_date' WHERE orderID = '$id'");
     closeDB();
     return $res;
 }
@@ -442,63 +442,4 @@ function status_search($searchStatus)
     return $res;
 }
 
-//------------------------------Работа с таблицей "paymentreceipts"------------------------------
-//Получение данных из таблицы
-function get_all_receipts_info()
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "CALL orders_receipts()");
-    closeDB();
-    return mysqli_fetch_all($res, MYSQLI_ASSOC);
-}
-
-//Получение данных из таблицы по ID
-function get_receipt_info_by_id($id)
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "SELECT * FROM paymentreceipts WHERE paymentreceiptID = $id");
-    closeDB();
-    return mysqli_fetch_assoc($res);
-}
-
-//Добавление нового чека
-function add_new_receipt($order_id, $cost)
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "INSERT INTO paymentreceipts (orderID, cost) VALUE ('$order_id', '$cost')");
-    closeDB();
-    return $res;
-}
-//Редактирование данных по ID
-function edit_receipt_by_id($id, $order_id, $cost)
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "UPDATE paymentreceipts SET orderID = '$order_id', cost = '$cost' WHERE paymentreceiptID = $id");
-    closeDB();
-    return $res;
-}
-
-//Удаление данных по ID
-function delete_receipt_by_id($receipt_id)
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "DELETE FROM paymentreceipts WHERE paymentreceiptID = $receipt_id");
-    closeDB();
-    return $res;
-}
-
-//Поиск чека по коду заказа
-function receipt_search($search_receipt)
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "CALL search_pay_receipt($search_receipt)");
-    closeDB();
-    return $res;
-}
 ?>
