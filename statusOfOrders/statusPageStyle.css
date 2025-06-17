@@ -116,14 +116,49 @@ table td
 	text-align: center;
 }
 
+/*Размеры столбцов таблицы*/
 th:nth-child(1), td:nth-child(1)
 {
-	width: 2%;
+	width: 5%;
 }
 
-th:nth-child(2), td:nth-child(2), th:nth-child(3), td:nth-child(3), th:nth-child(4), td:nth-child(4)
+th:nth-child(2), td:nth-child(2)
 {
-	width: 15%;
+	width: 45%;
+}
+
+th:nth-child(3), td:nth-child(3), th:nth-child(4), td:nth-child(4)
+{
+	width: 25%;
+}
+
+/*----------------------------------Результат удаления записи----------------------------------*/
+.del_status_result_section
+{
+	display: flex;
+	justify-content: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.del_status_result_div
+{
+	width: 800px;
+	padding: auto;
+}
+
+.del_res_massage
+{
+	text-align: center;
+	color: rgb(4, 44, 133);
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.back_button_div
+{
+	display: flex;
+	justify-content: center;
 }
 
 

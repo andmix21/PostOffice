@@ -60,14 +60,35 @@ function edit_client_by_id($client_id, $last_name, $first_name, $patronymic, $pa
 }
 
 //Удаление данных по ID
-function delete_client_by_id($client_id)
+function delete_client_by_id_proc($client_id)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "DELETE FROM clients WHERE clientID = $client_id");
+
+    //Переменная для результата
+    $result = '';
+
+    //Вызов процедуры с OUT-параметром
+    $stmt = $link->prepare("CALL client_del_by_id_proc(?, @result)");
+    $stmt->bind_param("i", $client_id);
+    $stmt->execute();
+    $stmt->close();
+
+    //Получение OUT-параметра
+    $res = $link->query("SELECT @result AS result");
+    $row = $res->fetch_assoc();
+    $result_value = $row['result'];
     closeDB();
-    return $res;
+    if ($result_value == 'ROLLBACK')
+    {
+        return 'Невозможно удалить данного клиента, так как он связан с таблицей "Заказы".';
+    } 
+    else 
+    {
+        return 'Запись успешно удалена.';
+    }
 }
+
 //Поиск клиента
 function client_search($searchClient)
 {
@@ -120,13 +141,33 @@ function edit_recipient_by_id($recipient_id, $last_name, $first_name, $patronymi
 }
 
 //Удаление данных по ID
-function delete_recipient_by_id($recipient_id)
+function delete_recipient_by_id_proc($recipient_id)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "DELETE FROM recipients WHERE recipientID = $recipient_id");
+
+    //Переменная для результата
+    $result = '';
+
+    //Вызов процедуры с OUT-параметром
+    $stmt = $link->prepare("CALL recipient_del_by_id_proc(?, @result)");
+    $stmt->bind_param("i", $recipient_id);
+    $stmt->execute();
+    $stmt->close();
+
+    //Получение OUT-параметра
+    $res = $link->query("SELECT @result AS result");
+    $row = $res->fetch_assoc();
+    $result_value = $row['result'];
     closeDB();
-    return $res;
+    if ($result_value == 'ROLLBACK')
+    {
+        return 'Невозможно удалить данного получателя, так как он связан с таблицей "Заказы".';
+    } 
+    else 
+    {
+        return 'Запись успешно удалена.';
+    }
 }
 
 //Поиск получателя
@@ -181,14 +222,35 @@ function edit_department_by_id($id, $region, $city_or_village, $address)
 }
 
 //Удаление данных по ID
-function delete_department_by_id($department_id)
+function delete_department_by_id_proc($department_id)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "DELETE FROM departments WHERE departmentID = $department_id");
+
+    //Переменная для результата
+    $result = '';
+
+    //Вызов процедуры с OUT-параметром
+    $stmt = $link->prepare("CALL department_del_by_id_proc(?, @result)");
+    $stmt->bind_param("i", $department_id);
+    $stmt->execute();
+    $stmt->close();
+
+    //Получение OUT-параметра
+    $res = $link->query("SELECT @result AS result");
+    $row = $res->fetch_assoc();
+    $result_value = $row['result'];
     closeDB();
-    return $res;
+    if ($result_value == 'ROLLBACK')
+    {
+        return 'Невозможно удалить данное отделение, так как оно связано с таблицами "Сотрудники", "Заказы" или "Состояния заказов".';
+    } 
+    else 
+    {
+        return 'Запись успешно удалена.';
+    }
 }
+
 //Поиск отделения
 function department_search($searchDepartment)
 {
@@ -241,13 +303,33 @@ function edit_corresp_type_by_id($id, $corresp_name)
 }
 
 //Удаление данных по ID
-function delete_corresp_type_by_id($corresp_type_id)
+function delete_corresp_type_by_id_proc($corresp_type_id)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "DELETE FROM corresptype WHERE correspTypeID = $corresp_type_id");
+
+    //Переменная для результата
+    $result = '';
+
+    //Вызов процедуры с OUT-параметром
+    $stmt = $link->prepare("CALL corresp_type_del_by_id_proc(?, @result)");
+    $stmt->bind_param("i", $corresp_type_id);
+    $stmt->execute();
+    $stmt->close();
+
+    //Получение OUT-параметра
+    $res = $link->query("SELECT @result AS result");
+    $row = $res->fetch_assoc();
+    $result_value = $row['result'];
     closeDB();
-    return $res;
+    if ($result_value == 'ROLLBACK')
+    {
+        return 'Невозможно удалить данный тип корреспонденций, так как он связан с таблицей "Заказы".';
+    } 
+    else 
+    {
+        return 'Запись успешно удалена.';
+    }
 }
 
 //Поиск типа
@@ -302,13 +384,33 @@ function edit_worker_by_id($worker_id, $last_name, $first_name, $patronymic, $ge
 }
 
 //Удаление данных по ID
-function delete_worker_by_id($worker_id)
+function delete_worker_by_id_proc($worker_id)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "DELETE FROM workers WHERE workerID = $worker_id");
+
+    //Переменная для результата
+    $result = '';
+
+    //Вызов процедуры с OUT-параметром
+    $stmt = $link->prepare("CALL worker_del_by_id_proc(?, @result)");
+    $stmt->bind_param("i", $worker_id);
+    $stmt->execute();
+    $stmt->close();
+
+    //Получение OUT-параметра
+    $res = $link->query("SELECT @result AS result");
+    $row = $res->fetch_assoc();
+    $result_value = $row['result'];
     closeDB();
-    return $res;
+    if ($result_value == 'ROLLBACK')
+    {
+        return 'Невозможно удалить данного сотрудника, так как он связан с таблицей "Заказы".';
+    } 
+    else 
+    {
+        return 'Запись успешно удалена.';
+    }
 }
 
 //Поиск сотрудника
@@ -362,14 +464,33 @@ function edit_order_by_id($id, $worker_id, $client_id, $corresp_type_id, $corres
     return $res;
 }
 
-//Удаление данных по ID
-function delete_order_by_id($order_id)
+function delete_order_by_id_proc($order_id)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "DELETE FROM orders WHERE orderID = $order_id");
+
+    //Переменная для результата
+    $result = '';
+
+    //Вызов процедуры с OUT-параметром
+    $stmt = $link->prepare("CALL order_del_by_id_proc(?, @result)");
+    $stmt->bind_param("i", $order_id);
+    $stmt->execute();
+    $stmt->close();
+
+    //Получение OUT-параметра
+    $res = $link->query("SELECT @result AS result");
+    $row = $res->fetch_assoc();
+    $result_value = $row['result'];
     closeDB();
-    return $res;
+    if ($result_value == 'ROLLBACK')
+    {
+        return 'Невозможно удалить данный заказ, так как он связан с таблицей "Состояния заказов".';
+    } 
+    else 
+    {
+        return 'Запись успешно удалена.';
+    }
 }
 
 //Поиск заказа по трек. коду
@@ -377,7 +498,7 @@ function order_search($searchOrder)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "CALL search_order($searchOrder)");
+    $res = mysqli_query($link, "CALL order_search($searchOrder)");
     closeDB();
     return $res;
 }
@@ -422,14 +543,33 @@ function edit_status_by_id($id, $status_name)
     return $res;
 }
 
-//Удаление данных по ID
-function delete_status_by_id($status_id)
+function delete_status_by_id_proc($status_id)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "DELETE FROM statusoforders WHERE statusID = $status_id");
+
+    //Переменная для результата
+    $result = '';
+
+    //Вызов процедуры с OUT-параметром
+    $stmt = $link->prepare("CALL status_of_order_del_by_id_proc(?, @result)");
+    $stmt->bind_param("i", $status_id);
+    $stmt->execute();
+    $stmt->close();
+
+    //Получение OUT-параметра
+    $res = $link->query("SELECT @result AS result");
+    $row = $res->fetch_assoc();
+    $result_value = $row['result'];
     closeDB();
-    return $res;
+    if ($result_value == 'ROLLBACK')
+    {
+        return 'Невозможно удалить данный статус, так как он связан с таблицей "Состояния заказов".';
+    } 
+    else 
+    {
+        return 'Запись успешно удалена.';
+    }
 }
 
 //Поиск типа
@@ -497,7 +637,7 @@ function status_order_search($searchStatusOrder)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "CALL search_tab_part_order_info($searchStatusOrder)");
+    $res = mysqli_query($link, "CALL tab_part_order_search($searchStatusOrder)");
     closeDB();
     return $res;
 }

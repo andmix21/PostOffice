@@ -1,0 +1,104 @@
+body
+{
+	font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(154, 205, 253);
+	min-width: 1000px;
+	margin: 0px;
+}
+
+/*----------------------------------Оформление шапки----------------------------------*/
+
+/*Шапка сайта*/
+.beginning
+{
+	display: flex;
+	justify-content: center;
+	background: rgb(4, 44, 133);
+	padding: 5px;
+}
+
+/*Настройки текста шапки*/
+.title_text
+{
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/*----------------------------------Оформление блока навигации----------------------------------*/
+.nav{
+    z-index: 1;
+    position: sticky;
+    top: 0;
+}
+
+.nav ul{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(4, 44, 133);
+	border: 2px solid rgb(80, 80, 80);
+	margin: 0px;
+}
+
+.nav li{
+	border-right: 2px solid rgb(80, 80, 80);
+    padding: 5px;
+	list-style-type: none;
+}
+
+li:first-child{
+    border-left: 2px solid rgb(80, 80, 80);
+}
+
+/*----------------------------------Результат удаления записи----------------------------------*/
+.del_result
+{
+	font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(154, 205, 253);
+	min-width: 1000px;
+	margin: 0px;
+}
+
+.del_order_result_section
+{
+	display: flex;
+	justify-content: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.del_order_result_div
+{
+	width: 800px;
+	padding: auto;
+}
+
+.del_res_massage
+{
+	text-align: center;
+	color: rgb(4, 44, 133);
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.back_button_div
+{
+	display: flex;
+	justify-content: center;
+}
+
+.back_button
+{
+	padding: 5px;
+	margin: 15px;
+	background-color:rgb(4, 44, 133);
+	border: 2px solid rgb(80, 80, 80);
+	white-space: nowrap;
+}
+
+a
+{
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+	font-weight: bold;
+}

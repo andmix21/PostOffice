@@ -143,3 +143,31 @@ th:nth-child(8), td:nth-child(10), th:nth-child(9), td:nth-child(11), th:nth-chi
 	width: 6%;
 }
 
+/*----------------------------------Результат удаления записи----------------------------------*/
+.del_worker_result_section
+{
+	display: flex;
+	justify-content: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.del_worker_result_div
+{
+	width: 800px;
+	padding: auto;
+}
+
+.del_res_massage
+{
+	text-align: center;
+	color: rgb(4, 44, 133);
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.back_button_div
+{
+	display: flex;
+	justify-content: center;
+}

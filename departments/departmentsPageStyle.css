@@ -133,3 +133,31 @@ th:nth-child(5), td:nth-child(5), th:nth-child(6), td:nth-child(6)
 	width: 8%;
 }
 
+/*----------------------------------Результат удаления записи----------------------------------*/
+.del_department_result_section
+{
+	display: flex;
+	justify-content: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.del_department_result_div
+{
+	width: 800px;
+	padding: auto;
+}
+
+.del_res_massage
+{
+	text-align: center;
+	color: rgb(4, 44, 133);
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.back_button_div
+{
+	display: flex;
+	justify-content: center;
+}
