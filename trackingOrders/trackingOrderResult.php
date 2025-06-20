@@ -10,11 +10,11 @@ $status_order_info = status_order_search($searchTerm);
     <meta charset = "UTF-8">
     <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
     <link rel = "stylesheet" href = "trackingOrdersStyle.css">
-    <title>Результаты поиска состояния заказа</title>
+    <title>Результаты поиска состояний заказа</title>
 </head>
 <body>
     <section class = "beginning", id='home'>
-        <div class = "title_text">РЕЗУЛЬТАТЫ ПОИСКА СОСТОЯНИЯ ЗАКАЗА №<?php echo $_GET['search_term'] ?></div>
+        <div class = "title_text">РЕЗУЛЬТАТЫ ПОИСКА СОСТОЯНИЙ ЗАКАЗА №<?php echo $_GET['search_term'] ?></div>
     </section>
     <section class = "indent_section">
     </section>
