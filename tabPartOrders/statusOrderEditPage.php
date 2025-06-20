@@ -1,5 +1,5 @@
 <?php
-include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
+include "/PostOffice/functions_db.php";
 $status_order_info = get_status_order_info_by_id($_GET['statusOrderEditById']);
 $status_info = get_all_status_info();
 $departments_info = get_all_departments_info();

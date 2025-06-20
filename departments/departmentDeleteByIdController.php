@@ -1,5 +1,5 @@
 <?php
-include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
+include "/PostOffice/functions_db.php";
 $department_del_result = delete_department_by_id_proc($_GET['departmentDelById']);
 ?>
 

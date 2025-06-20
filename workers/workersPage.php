@@ -1,5 +1,5 @@
 <?php
-include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
+include "/PostOffice/functions_db.php";
 $departments_info = get_all_departments_info();
 $workers_info = get_all_workers_info();
 ?>

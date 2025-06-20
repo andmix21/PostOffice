@@ -1,5 +1,5 @@
 <?php
-include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
+include "/PostOffice/functions_db.php";
 $client_del_result = delete_client_by_id_proc($_GET['clientDelById']);
 ?>
 

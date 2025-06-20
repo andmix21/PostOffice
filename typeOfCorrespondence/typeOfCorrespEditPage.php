@@ -1,5 +1,5 @@
 <?php
-include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
+include "/PostOffice/functions_db.php";
 $corresp_type = get_corresp_type_info_by_id($_GET['typeOfCorrespEditById']);
 ?>
 

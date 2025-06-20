@@ -1,5 +1,5 @@
 <?php
-include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
+include "/PostOffice/functions_db.php";
 $searchTerm = $_GET['search_term'];
 $recipients_info = recipient_search($searchTerm);
 ?>

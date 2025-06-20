@@ -1,5 +1,5 @@
 <?php
-include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
+include "/PostOffice/functions_db.php";
 $recipient = get_recipient_info_by_id($_GET['recipientEditById']);
 ?>
 

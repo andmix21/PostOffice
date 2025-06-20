@@ -1,5 +1,5 @@
 <?php
-include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
+include "/PostOffice/functions_db.php";
 $searchTerm = $_GET['search_term'];
 $corresp_type_info = corresp_type_search($searchTerm);
 ?>

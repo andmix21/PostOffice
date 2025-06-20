@@ -1,5 +1,5 @@
 <?php
-include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
+include "/PostOffice/functions_db.php";
 $recipient_del_result = delete_recipient_by_id_proc($_GET['recipientDelById']);
 ?>
 

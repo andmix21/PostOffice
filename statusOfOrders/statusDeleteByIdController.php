@@ -1,5 +1,5 @@
 <?php
-include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
+include "/PostOffice/functions_db.php";
 $status_del_result = delete_status_by_id_proc($_GET['statusDelById']);
 ?>
 

@@ -1,5 +1,5 @@
 <?php
-include "D:/Database/xampp/htdocs/PostOffice/functions_db.php";
+include "/PostOffice/functions_db.php";
 $searchTerm = $_GET['search_term'];
 $departments_info = department_search($searchTerm);
 ?>
