@@ -1,5 +1,5 @@
 <?php
-include "/PostOffice/functions_db.php";
+include "../functions_db.php";
 $status_type = get_status_info_by_id($_GET['statusEditById']);
 ?>
 

@@ -1,5 +1,5 @@
 <?php
-include "/PostOffice/functions_db.php";
+include "../functions_db.php";
 $worker = get_worker_info_by_id($_GET['workerEditById']);
 $departments_info = get_all_departments_info();
 ?>

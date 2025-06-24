@@ -1,5 +1,5 @@
 <?php
-include "/PostOffice/functions_db.php";
+include "../functions_db.php";
 $corresp_type_del_result = delete_corresp_type_by_id_proc($_GET['typeOfCorrespDelById']);
 ?>
 

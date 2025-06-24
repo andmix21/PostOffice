@@ -1,5 +1,5 @@
 <?php
-include "/PostOffice/functions_db.php";
+include "../functions_db.php";
 $clients_info = get_all_clients_info();
 ?>
 

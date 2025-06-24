@@ -1,5 +1,5 @@
 <?php
-include "/PostOffice/functions_db.php";
+include "../functions_db.php";
 $order_del_result = delete_order_by_id_proc($_GET['orderDelById']);
 ?>
 

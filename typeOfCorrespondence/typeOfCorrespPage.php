@@ -1,5 +1,5 @@
 <?php
-include "/PostOffice/functions_db.php";
+include "../functions_db.php";
 $corresp_type_info = get_all_corresp_type_info();
 ?>
 

@@ -1,5 +1,5 @@
 <?php
-include "/PostOffice/functions_db.php";
+include "../functions_db.php";
 $client = get_client_info_by_id($_GET['clientEditById']);
 ?>
 

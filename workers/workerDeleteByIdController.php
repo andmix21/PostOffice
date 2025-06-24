@@ -1,5 +1,5 @@
 <?php
-include "/PostOffice/functions_db.php";
+include "../functions_db.php";
 $worker_del_result = delete_worker_by_id_proc($_GET['workerDelById']);
 ?>
 

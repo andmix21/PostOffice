@@ -1,5 +1,5 @@
 <?php
-include "/PostOffice/functions_db.php";
+include "../functions_db.php";
 $searchTerm = $_GET['search_term'];
 $order_info = order_search($searchTerm);
 ?>
