@@ -22,7 +22,6 @@ $status_order_info = status_order_search($searchTerm);
             <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
             <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
             <li><a href="/PostOffice/clients/clientsPage.php">Клиенты</a></li>
-            <li><a href="/PostOffice/recipients/recipientsPage.php">Получатели</a></li>
             <li><a href="/PostOffice/orders/ordersPage.php">Заказы</a></li>
             <li><a href="/PostOffice/tabPartOrders/statusOrderPage.php">Состояния заказов</a></li>
         </ul>

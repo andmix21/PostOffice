@@ -99,87 +99,6 @@ function client_search($searchClient)
     return $res;
 }
 
-//------------------------------Работа с таблицей "recipients"------------------------------
-
-//Получение данных из таблицы
-function get_all_recipient_info()
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "SELECT * FROM recipients ORDER BY recipientLastName");
-    closeDB();
-    return mysqli_fetch_all($res, MYSQLI_ASSOC);
-}
-
-//Получение данных из таблицы по ID
-function get_recipient_info_by_id($id)
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "SELECT * FROM recipients WHERE recipientID = $id");
-    closeDB();
-    return mysqli_fetch_assoc($res);
-}
-
-//Добавление нового получателя
-function add_new_recipient($last_name, $first_name, $patronymic, $phone)
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "INSERT INTO recipients (recipientLastName, recipientFirstName, recipientPatronymic, recipientPhone) VALUE ('$last_name', '$first_name','$patronymic', '$phone')");
-    closeDB();
-    return $res;
-}
-//Редактирование данных по ID
-function edit_recipient_by_id($recipient_id, $last_name, $first_name, $patronymic, $phone)
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "UPDATE recipients SET recipientLastName = '$last_name', recipientFirstName = '$first_name', recipientPatronymic = '$patronymic', recipientPhone = '$phone' WHERE recipientID = $recipient_id");
-    closeDB();
-    return $res;
-}
-
-//Удаление данных по ID
-function delete_recipient_by_id_proc($recipient_id)
-{
-    global $link;
-    openDB();
-
-    //Переменная для результата
-    $result = '';
-
-    //Вызов процедуры с OUT-параметром
-    $stmt = $link->prepare("CALL recipient_del_by_id_proc(?, @result)");
-    $stmt->bind_param("i", $recipient_id);
-    $stmt->execute();
-    $stmt->close();
-
-    //Получение OUT-параметра
-    $res = $link->query("SELECT @result AS result");
-    $row = $res->fetch_assoc();
-    $result_value = $row['result'];
-    closeDB();
-    if ($result_value == 'ROLLBACK')
-    {
-        return 'Невозможно удалить данного получателя, так как он связан с таблицей "Заказы".';
-    } 
-    else 
-    {
-        return 'Запись успешно удалена.';
-    }
-}
-
-//Поиск получателя
-function recipient_search($searchRecipient)
-{
-    global $link;
-    openDB();
-    $res = mysqli_query($link, "SELECT * FROM recipients WHERE recipientLastName LIKE '%$searchRecipient%' OR recipientFirstName LIKE '%$searchRecipient%' OR recipientPatronymic LIKE '%$searchRecipient%' OR recipientPhone LIKE '%$searchRecipient%' ORDER BY recipientLastName");
-    closeDB();
-    return $res;
-}
-
 //------------------------------Работа с таблицей "departments"------------------------------
 
 //Получение данных из таблицы
@@ -446,20 +365,20 @@ function get_order_info_by_id($id)
 }
 
 //Добавление нового заказа
-function add_new_order($worker_id, $client_id, $corresp_type_id, $corresp_weight, $recipient_id, $department_id, $cost, $reg_date)
+function add_new_order($worker_id, $sender_id, $corresp_type_id, $corresp_weight, $recipient_id, $department_id, $cost, $reg_date)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "INSERT INTO orders (workerID, clientID, correspTypeID, correspWeight, recipientID, departmentID, cost, regDate) VALUE ('$worker_id', '$client_id', '$corresp_type_id', '$corresp_weight', '$recipient_id', '$department_id', '$cost', '$reg_date')");
+    $res = mysqli_query($link, "INSERT INTO orders (workerID, senderID, correspTypeID, correspWeight, recipientID, departmentID, cost, regDate) VALUE ('$worker_id', '$sender_id', '$corresp_type_id', '$corresp_weight', '$recipient_id', '$department_id', '$cost', '$reg_date')");
     closeDB();
     return $res;
 }
 //Редактирование данных по ID
-function edit_order_by_id($id, $worker_id, $client_id, $corresp_type_id, $corresp_weight, $recipient_id, $department_id, $cost, $reg_date)
+function edit_order_by_id($id, $worker_id, $sender_id, $corresp_type_id, $corresp_weight, $recipient_id, $department_id, $cost, $reg_date)
 {
     global $link;
     openDB();
-    $res = mysqli_query($link, "UPDATE orders SET workerID = '$worker_id', clientID = '$client_id', correspTypeID = '$corresp_type_id', correspWeight = '$corresp_weight', recipientID = '$recipient_id', departmentID = '$department_id', cost = '$cost', regDate = '$reg_date' WHERE orderID = '$id'");
+    $res = mysqli_query($link, "UPDATE orders SET workerID = '$worker_id', senderID = '$sender_id', correspTypeID = '$corresp_type_id', correspWeight = '$corresp_weight', recipientID = '$recipient_id', departmentID = '$department_id', cost = '$cost', regDate = '$reg_date' WHERE orderID = '$id'");
     closeDB();
     return $res;
 }
@@ -533,6 +452,7 @@ function add_new_status($status_name)
     closeDB();
     return $res;
 }
+
 //Редактирование данных по ID
 function edit_status_by_id($id, $status_name)
 {

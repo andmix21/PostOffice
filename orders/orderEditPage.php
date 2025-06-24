@@ -4,7 +4,6 @@ $order = get_order_info_by_id($_GET['orderEditById']);
 $workers_info = get_all_workers_info();
 $clients_info = get_all_clients_info();
 $corresp_type_info = get_all_corresp_type_info();
-$recipients_info = get_all_recipient_info();
 $departments_info = get_all_departments_info();
 ?>
 
@@ -14,7 +13,7 @@ $departments_info = get_all_departments_info();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "/PostOffice/formPagesStyle.css">
-    <title>Редактирование данных клиента</title>
+    <title>Редактирование данных заказа</title>
 </head>
 <body>
     <section class = "beginning", id='home'>
@@ -26,7 +25,6 @@ $departments_info = get_all_departments_info();
             <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
             <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
             <li><a href="/PostOffice/clients/clientsPage.php">Клиенты</a></li>
-            <li><a href="/PostOffice/recipients/recipientsPage.php">Получатели</a></li>
             <li><a href="/PostOffice/orders/ordersPage.php">Заказы</a></li>
             <li><a href="/PostOffice/tabPartOrders/statusOrderPage.php">Состояния заказов</a></li>
         </ul>
@@ -58,23 +56,23 @@ $departments_info = get_all_departments_info();
                     </div>        
                 </div>
 
-                <div class = "label"><label for = "client_id">Клиент</label>
+                <div class = "label"><label for = "sender_id">Отправитель</label>
                     <div>
-                        <select id = "client_id" name = "client_id">
+                        <select id = "sender_id" name = "sender_id">
                             <?php
-                                $client_id = $order['clientID'];
+                                $sender_id = $order['senderID'];
 
                                 for ($i = 0; $i < count($clients_info); $i++)
                                 {
                                     $id = $clients_info[$i]["clientID"];
-                                    $client_last_name = $clients_info[$i]["clientLastName"];
-                                    $client_first_name = $clients_info[$i]["clientFirstName"];
-                                    $client_patronymic = $clients_info[$i]["clientPatronymic"];
+                                    $sender_last_name = $clients_info[$i]["clientLastName"];
+                                    $sender_first_name = $clients_info[$i]["clientFirstName"];
+                                    $sender_patronymic = $clients_info[$i]["clientPatronymic"];
 
                                     $a = "";
-                                    if ($id==$client_id)
+                                    if ($id==$sender_id)
                                     {$a = 'selected';}
-                                    echo '<option '.$a.' value = "'.$id.'">'.$client_last_name.' '.$client_first_name.' '.$client_patronymic.'</option>';
+                                    echo '<option '.$a.' value = "'.$id.'">'.$sender_last_name.' '.$sender_first_name.' '.$sender_patronymic.'</option>';
                                 }
                             ?>
                         </select>
@@ -114,12 +112,12 @@ $departments_info = get_all_departments_info();
                             <?php
                                 $recipient_id = $order['recipientID'];
 
-                                for ($i = 0; $i < count($recipients_info); $i++)
+                                for ($i = 0; $i < count($clients_info); $i++)
                                 {
-                                    $id = $recipients_info[$i]["recipientID"];
-                                    $recipient_last_name = $recipients_info[$i]["recipientLastName"];
-                                    $recipient_first_name = $recipients_info[$i]["recipientFirstName"];
-                                    $recipient_patronymic = $recipients_info[$i]["recipientPatronymic"];
+                                    $id = $clients_info[$i]["clientID"];
+                                    $recipient_last_name = $clients_info[$i]["clientLastName"];
+                                    $recipient_first_name = $clients_info[$i]["clientFirstName"];
+                                    $recipient_patronymic = $clients_info[$i]["clientPatronymic"];
 
                                     $a = "";
                                     if ($id==$recipient_id)
