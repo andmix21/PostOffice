@@ -19,11 +19,11 @@ $workers_info = get_all_workers_info();
     <div class="nav">
         <ul>
             <li><a href="#home">Начало страницы</a></li>
-            <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
-            <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
-            <li><a href="/PostOffice/clients/clientsPage.php">Клиенты</a></li>
-            <li><a href="/PostOffice/orders/ordersPage.php">Заказы</a></li>
-            <li><a href="/PostOffice/tabPartOrders/statusOrderPage.php">Состояния заказов</a></li>
+            <li><a href="../departments/departmentsPage.php">Почтовые отделения</a></li>
+            <li><a href="../workers/workersPage.php">Сотрудники</a></li>
+            <li><a href="../clients/clientsPage.php">Клиенты</a></li>
+            <li><a href="../orders/ordersPage.php">Заказы</a></li>
+            <li><a href="../tabPartOrders/statusOrderPage.php">Состояния заказов</a></li>
         </ul>
     </div>
     <section class = "add_and_find_worker">
@@ -64,8 +64,8 @@ $workers_info = get_all_workers_info();
                     <td>$worker_department_city</td>
                     <td>$worker_department_address</td>
                     <td>$worker_post</td>
-                    <td><a href = workerEditPage.php?workerEditById=$worker_id><img src = '/PostOffice/Resources/edit.png'</a></td>
-                    <td><a href = workerDeleteByIdController.php?workerDelById=$worker_id><img src = '/PostOffice/Resources/cross.png'</a></td></tr>";
+                    <td><a href = workerEditPage.php?workerEditById=$worker_id><img src = '../Resources/edit.png'</a></td>
+                    <td><a href = workerDeleteByIdController.php?workerDelById=$worker_id><img src = '../Resources/cross.png'</a></td></tr>";
                 }
             ?>
         </table>

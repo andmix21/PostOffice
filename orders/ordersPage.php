@@ -18,11 +18,11 @@ $orders_info = get_all_orders_info();
     <div class="nav">
         <ul>
             <li><a href="#home">Начало страницы</a></li>
-            <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
-            <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
-            <li><a href="/PostOffice/clients/clientsPage.php">Клиенты</a></li>
-            <li><a href="/PostOffice/orders/ordersPage.php">Заказы</a></li>
-            <li><a href="/PostOffice/tabPartOrders/statusOrderPage.php">Состояния заказов</a></li>
+            <li><a href="../departments/departmentsPage.php">Почтовые отделения</a></li>
+            <li><a href="../workers/workersPage.php">Сотрудники</a></li>
+            <li><a href="../clients/clientsPage.php">Клиенты</a></li>
+            <li><a href="../orders/ordersPage.php">Заказы</a></li>
+            <li><a href="../tabPartOrders/statusOrderPage.php">Состояния заказов</a></li>
         </ul>
     </div>
     <section class = "add_and_find_order">
@@ -37,10 +37,10 @@ $orders_info = get_all_orders_info();
             <a href = "orderAddPage.php">Добавить новый заказ</a>  
         </div>
         <div class = "add_order_button">
-            <a href = "/PostOffice/typeOfCorrespondence/typeOfCorrespPage.php">Список типов корреспонденций</a>  
+            <a href = "../typeOfCorrespondence/typeOfCorrespPage.php">Список типов корреспонденций</a>  
         </div>
         <div class = "add_order_button">
-            <a href = "/PostOffice/statusOfOrders/statusPage.php">Список статусов</a>  
+            <a href = "../statusOfOrders/statusPage.php">Список статусов</a>  
         </div>
     </section>
     <div class = "table">
@@ -93,9 +93,9 @@ $orders_info = get_all_orders_info();
                     <td>$b_dep_address</td>
                     <td>$cost</td>
                     <td>$reg_date</td>
-                    <td><a href = /PostOffice/tabPartOrders/statusOrderAddPage.php?statusOrderAddById=$order_id><img src = '/PostOffice/Resources/addStatus.png'</a></td>
-                    <td><a href = orderEditPage.php?orderEditById=$order_id><img src = '/PostOffice/Resources/edit.png'</a></td>
-                    <td><a href = orderDeleteByIdController.php?orderDelById=$order_id><img src = '/PostOffice/Resources/cross.png'</a></td></tr>";
+                    <td><a href = ../tabPartOrders/statusOrderAddPage.php?statusOrderAddById=$order_id><img src = '../Resources/addStatus.png'</a></td>
+                    <td><a href = orderEditPage.php?orderEditById=$order_id><img src = '../Resources/edit.png'</a></td>
+                    <td><a href = orderDeleteByIdController.php?orderDelById=$order_id><img src = '../Resources/cross.png'</a></td></tr>";
                 }
             ?>
         </table>

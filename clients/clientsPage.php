@@ -18,11 +18,11 @@ $clients_info = get_all_clients_info();
     <div class="nav">
         <ul>
             <li><a href="#home">Начало страницы</a></li>
-            <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
-            <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
-            <li><a href="/PostOffice/clients/clientsPage.php">Клиенты</a></li>
-            <li><a href="/PostOffice/orders/ordersPage.php">Заказы</a></li>
-            <li><a href="/PostOffice/tabPartOrders/statusOrderPage.php">Состояния заказов</a></li>
+            <li><a href="../departments/departmentsPage.php">Почтовые отделения</a></li>
+            <li><a href="../workers/workersPage.php">Сотрудники</a></li>
+            <li><a href="../clients/clientsPage.php">Клиенты</a></li>
+            <li><a href="../orders/ordersPage.php">Заказы</a></li>
+            <li><a href="../tabPartOrders/statusOrderPage.php">Состояния заказов</a></li>
         </ul>
     </div>
     <section class = "add_and_find_client">
@@ -55,8 +55,8 @@ $clients_info = get_all_clients_info();
                     <td>$client_patronymic</td>
                     <td>$client_passport</td>
                     <td>$client_phone_number</td>
-                    <td><a href = clientEditPage.php?clientEditById=$client_id><img src = '/PostOffice/Resources/edit.png'</a></td>
-                    <td><a href = clientDeleteByIdController.php?clientDelById=$client_id><img src = '/PostOffice/Resources/cross.png'</a></td></tr>";
+                    <td><a href = clientEditPage.php?clientEditById=$client_id><img src = '../Resources/edit.png'</a></td>
+                    <td><a href = clientDeleteByIdController.php?clientDelById=$client_id><img src = '../Resources/cross.png'</a></td></tr>";
                 }
             ?>
         </table>

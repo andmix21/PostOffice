@@ -19,11 +19,11 @@ $departments_info = department_search($searchTerm);
     <div class="nav">
         <ul>
             <li><a href="#home">Начало страницы</a></li>
-            <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
-            <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
-            <li><a href="/PostOffice/clients/clientsPage.php">Клиенты</a></li>
-            <li><a href="/PostOffice/orders/ordersPage.php">Заказы</a></li>
-            <li><a href="/PostOffice/tabPartOrders/statusOrderPage.php">Состояния заказов</a></li>
+            <li><a href="../departments/departmentsPage.php">Почтовые отделения</a></li>
+            <li><a href="../workers/workersPage.php">Сотрудники</a></li>
+            <li><a href="../clients/clientsPage.php">Клиенты</a></li>
+            <li><a href="../orders/ordersPage.php">Заказы</a></li>
+            <li><a href="../tabPartOrders/statusOrderPage.php">Состояния заказов</a></li>
         </ul>
     </div>
     <section class = "add_and_find_department">
@@ -46,8 +46,8 @@ $departments_info = department_search($searchTerm);
                         <td>$department_region</td>
                         <td>$department_city_or_village</td>
                         <td>$department_address</td>
-                        <td><a href = departmentEditPage.php?departmentEditById=$department_id><img src = '/PostOffice/Resources/edit.png'</a></td>
-                        <td><a href = departmentDeleteByIdController.php?departmentDelById=$department_id><img src = '/PostOffice/Resources/cross.png'</a></td>
+                        <td><a href = departmentEditPage.php?departmentEditById=$department_id><img src = '../Resources/edit.png'</a></td>
+                        <td><a href = departmentDeleteByIdController.php?departmentDelById=$department_id><img src = '../Resources/cross.png'</a></td>
                         </tr>";
                 }
             ?>

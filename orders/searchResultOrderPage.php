@@ -19,11 +19,11 @@ $order_info = order_search($searchTerm);
     <div class="nav">
         <ul>
             <li><a href="#home">Начало страницы</a></li>
-            <li><a href="/PostOffice/departments/departmentsPage.php">Почтовые отделения</a></li>
-            <li><a href="/PostOffice/workers/workersPage.php">Сотрудники</a></li>
-            <li><a href="/PostOffice/clients/clientsPage.php">Клиенты</a></li>
-            <li><a href="/PostOffice/orders/ordersPage.php">Заказы</a></li>
-            <li><a href="/PostOffice/tabPartOrders/statusOrderPage.php">Состояния заказов</a></li>
+            <li><a href="../departments/departmentsPage.php">Почтовые отделения</a></li>
+            <li><a href="../workers/workersPage.php">Сотрудники</a></li>
+            <li><a href="../clients/clientsPage.php">Клиенты</a></li>
+            <li><a href="../orders/ordersPage.php">Заказы</a></li>
+            <li><a href="../tabPartOrders/statusOrderPage.php">Состояния заказов</a></li>
         </ul>
     </div>
     <section class = "indent_section">
@@ -78,9 +78,9 @@ $order_info = order_search($searchTerm);
                     <td>$b_dep_address</td>
                     <td>$cost</td>
                     <td>$reg_date</td>
-                    <td><a href = /PostOffice/tabPartOrders/statusOrderAddPage.php?statusOrderAddById=$order_id><img src = '/PostOffice/Resources/addStatus.png'</a></td>
-                    <td><a href = orderEditPage.php?orderEditById=$order_id><img src = '/PostOffice/Resources/edit.png'</a></td>
-                    <td><a href = orderDeleteByIdController.php?orderDelById=$order_id><img src = '/PostOffice/Resources/cross.png'</a></td></tr>";
+                    <td><a href = ../tabPartOrders/statusOrderAddPage.php?statusOrderAddById=$order_id><img src = '../Resources/addStatus.png'</a></td>
+                    <td><a href = orderEditPage.php?orderEditById=$order_id><img src = '../Resources/edit.png'</a></td>
+                    <td><a href = orderDeleteByIdController.php?orderDelById=$order_id><img src = '../Resources/cross.png'</a></td></tr>";
                 }
             ?>
         </table>
